@@ -5,7 +5,7 @@ local model; your chats stay encrypted on your machine. Windows and Linux.
 
 **[Download](https://rin.chat/download/)** · **[Features](https://rin.chat/features/)** ·
 **[Guide](https://rin.chat/guide/)** · **[Update notes](https://rin.chat/changelog/)** ·
-**[Discord](https://discord.com/invite/3KHa2QHvwv)**
+**[Discord](https://discord.com/invite/3KHa2QHvwv)** · **[Reddit](https://www.reddit.com/r/Rinchat/)**
 
 This repository is where you **report bugs and request features**, and it carries a copy of the documentation:
 the full [user guide](guide/README.md) as Markdown, refreshed with every release, and the
@@ -20,7 +20,9 @@ the full [user guide](guide/README.md) as Markdown, refreshed with every release
 helps more than a duplicate.
 
 - For quick help, or "is this a bug or am I doing it wrong", ask in [Discord](https://discord.com/invite/3KHa2QHvwv).
-- For security problems, do **not** open a public issue. Email info@rin.chat.
+- To share characters or ask the community, post on [r/Rinchat](https://www.reddit.com/r/Rinchat/).
+- For security problems, do **not** open a public issue. Email info@rin.chat or
+  [DM me on Discord](https://discord.com/users/1385702791766610032).
 
 ## Guide
 
@@ -64,6 +66,11 @@ Providers, media and more:
 - [Card format](https://rin.chat/card-format/): the character card spec Rin Chat reads and writes
 - [Card grading](https://rin.chat/card-grading/): how cards are scored
 - [Rin Chat vs SillyTavern](https://rin.chat/sillytavern-alternative/)
-- [For AI assistants (llms.txt)](https://rin.chat/llms.txt): the whole guide as plain text, to hand to a chatbot
+
+## For AI agents
+
+Markdown written for AI models, so an assistant can write cards, build Adventure Mode games and answer
+questions about Rin Chat without guessing: [for-ai-agents/](for-ai-agents/README.md), the same files as
+[rin.chat/llms](https://rin.chat/llms/). The rules for agents are in [llms.txt](for-ai-agents/llms.txt).
 
 Rin Chat is made by Rin Chat LLC.

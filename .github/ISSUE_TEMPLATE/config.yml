@@ -3,9 +3,12 @@ contact_links:
   - name: Ask for help on Discord
     url: https://discord.com/invite/3KHa2QHvwv
     about: Quick help, setup questions, and "is this a bug or am I doing it wrong".
+  - name: Share characters and ask on Reddit
+    url: https://www.reddit.com/r/Rinchat/
+    about: The Rin Chat community on r/Rinchat.
   - name: Read the guide
     url: https://rin.chat/guide/
     about: Every feature, with troubleshooting and an FAQ.
   - name: Report a security problem privately
-    url: https://rin.chat/contact/
-    about: Please do not open a public issue for security problems. Email info@rin.chat.
+    url: https://discord.com/users/1385702791766610032
+    about: Please do not open a public issue for security problems. Email info@rin.chat or DM me on Discord.
