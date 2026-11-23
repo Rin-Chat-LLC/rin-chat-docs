@@ -1,0 +1,33 @@
+# Themes, Colors and Backgrounds
+
+> Read this on [rin.chat](https://rin.chat/guide/appearance/), with screenshots. Generated from the guide in Rin Chat 1.0.4; changes made here are overwritten by the next release.
+
+## Appearance, themes & backgrounds
+
+Looks are split across three leaves under **Customization**: Theme & Colors (themes, the palette, message colors, background images), Sizing & Layout (UI scale, font size, header buttons) and Chat Display (how the chat itself behaves and reads).
+
+**Finding your way around Settings.** The **search box** above the section list matches sections *and* individual rows, so typing "enter to send" lands on the row itself. **Pop out** (top of the panel) opens Settings in its own window so you can keep chatting while you tune. Inside Settings your mouse's back button (or `Alt`+`←`) steps back through the sections you've visited before it closes the panel.
+
+**Themes.** The app ships two built-ins, **Dark** and **Light**. Both are read-only — to change anything, pick one and choose **Duplicate** from the `⋯` menu, or press **New theme** to name the look you have now. From then on every color you touch *auto-saves into the selected theme*; there is no save button. The `⋯` menu also holds Rename, Delete, and **Import / Export .rctheme**.
+
+- **The palette** is twenty-two colors in four groups: surfaces, ink (text and borders), accent and status. Any color you change grows a *reset* link back to that mode's default, and one button resets them all. **Button borders** outlines buttons apart from the panels' **Borders**; until you set it, it follows Buttons & accents. **Button glow** adds a lit edge and a soft halo to the filled buttons.
+- **Chat message colors** are separate: quoted speech, italic narration, bold, and body text, with a live preview above them. Leave body text and bold at their defaults and they follow the theme automatically, so a light theme stays readable; pick a color and you get exactly that color in both modes.
+- **Background images** can be set for the Library, Lorebooks and Chats views: one for all three or one each. Pick anything under 10 MB; it's downscaled and converted to WebP before it's stored, so a huge photo can't slow the app down. **Animated WebPs** keep their animation: up to 25 MB going in and 7 MB once converted. Converting an animation takes a moment; the thumbnail shows a spinner and the seconds elapsed, then a note with the size, or the reason it couldn't be used. You can leave the page meanwhile and it is still set when it finishes. Backgrounds are kept as separate files and only load when a screen showing them is open, so they never slow down unlocking. A **background dim** slider then fades it behind the text (70% by default: more dim, more readable).
+- **.rctheme** is a single file carrying the palette, the message colors, the dim and the background images, so a whole look can be shared. Importing one adds it as a new theme rather than overwriting yours, and any styling that would make the app fetch from the internet is stripped out on the way in.
+
+> **Tip:** Editing colors and finding nothing changes? You're on **Dark** or **Light** — the built-ins are read-only. **Duplicate** first.
+
+**Sizing** (Sizing & Layout). *UI scale* (80–200%) zooms the whole interface — nav, buttons, labels — for large or hi-dpi screens. *Message font size* (12–28px) changes only the chat text, with a preview line underneath. *Motion* decides whether the app's animations and document styles' animations play: *Match system* follows your device's reduce motion setting (a Remote Desktop session usually turns it on), *Always reduce* and *Always animate* override it. Each device keeps its own choice, so your phone can differ from your computer.
+
+**Header buttons** (same leaf). Which optional buttons sit on the top bar: Tools (Card Forge, Image Studio, Story Maker and Direct Chat), Lock screen and Guide. Unpinned ones move into the bar's `☰` menu; that's where Lock screen starts. Library and Settings are always shown.
+
+**Chat display** (Chat Display) is how the transcript looks and reads; nothing there changes what the model sees. Its cards:
+
+- **Message layout**: which side *Your messages* sit on (right, opposite the character, or left, on the same side); which corner the hover *Message buttons* appear in (top right, top left, bottom right or bottom left); *Timed choices*; avatars for the character and for you, and the *Avatar size* a chat starts with (click any avatar in a chat to switch it between small and large, or shift-click one to see it on its own); *Character expressions* as a side panel, a visual novel stage above the chat, or hidden, and *Choosing the expression* from the reply offline (built in), with the emotion classifier, or only when the reply asks for one (see the card format section); *Auto-close italics*, so an unclosed `*italic*` can't bleed across a message; and *Wrap long lines in code blocks*.
+- **Sending & scrolling**: *Press Enter to send*; whether a plain click on Continue or Impersonate opens the instructions box first (Shift-click then skips it); and *When a reply finishes*: keep the whole reply on screen, jump to the end of the reply, jump to the start of the reply, or stay where I am.
+- **Chat titles**: the AI chat-title settings and the *New chat name format* (MM/DD/YYYY, DD/MM/YYYY or YYYY-MM-DD) for chats that aren't AI-named.
+- **Thinking display**: whether a reasoning model's Thinking block starts expanded. Only how the block displays is set here; whether it's parsed at all belongs to the generation config.
+- **Card library**: which notes your library tiles show, and whether persona cards appear under All cards.
+- **Automatic tags** (both off until you turn them on): tag an imported card when you change its content (`edited`) or replace its image (`new art`); you can rename either tag. Turning the first on also tags imported cards you'd already edited. Cards you made in Rin Chat never get these tags.
+
+**Reset chat appearance to defaults**, at the bottom, puts the chat appearance choices back to their defaults. (The scene tracker's switches live in Settings → Memory & Context, not here.)

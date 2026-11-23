@@ -1,0 +1,25 @@
+# Rin Chat Guide
+
+> Read this on [rin.chat](https://rin.chat/guide/), with screenshots. Generated from the guide in Rin Chat 1.0.4; changes made here are overwritten by the next release.
+
+- [Getting Started with Rin Chat](getting-started.md)
+- [Rin Chat Troubleshooting and FAQ](troubleshooting.md)
+- [Character Cards in Rin Chat: Library, Editor and Card Format](character-cards.md)
+- [Import from SillyTavern: Cards, Lorebooks, Presets, Personas](import-from-sillytavern.md)
+- [Card Forge: Build Characters and Lorebooks with AI](card-forge.md)
+- [Chatting in Rin Chat: Swipes, Personas and Direct Chat](chatting.md)
+- [Group Chats and Story Director](group-chats.md)
+- [Memory, Context and Prompting](memory-and-prompting.md)
+- [Lorebooks: Import SillyTavern World Info and Write Entries](lorebooks.md)
+- [Providers, API Keys and Local Models (LM Studio, Ollama)](providers.md)
+- [Interactive Replies: Choices, Command Tags, Generators](interactive-replies.md)
+- [Document Styles and Chat Styles](document-styles.md)
+- [Macros and Regex Scripts](macros.md)
+- [Adventure Mode: AI Game Master, Dice and Character Sheets](adventure-mode.md)
+- [Build Your Own Adventure Mode Game](build-a-game.md)
+- [AI Image Generation: In Chat, ComfyUI and Image Studio](images.md)
+- [Voice: Text to Speech and Dictation](voice.md)
+- [Use Rin Chat from Your Phone's Browser](phone-remote.md)
+- [Rin Chat Discord Bot](discord-bot.md)
+- [Backup, Export, Account Security and Privacy](backup-and-privacy.md)
+- [Themes, Colors and Backgrounds](appearance.md)

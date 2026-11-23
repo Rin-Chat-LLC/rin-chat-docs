@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Ask for help on Discord
+    url: https://discord.com/invite/3KHa2QHvwv
+    about: Quick help, setup questions, and "is this a bug or am I doing it wrong".
+  - name: Read the guide
+    url: https://rin.chat/guide/
+    about: Every feature, with troubleshooting and an FAQ.
+  - name: Report a security problem privately
+    url: https://rin.chat/contact/
+    about: Please do not open a public issue for security problems. Email info@rin.chat.

@@ -1,0 +1,64 @@
+name: Bug report
+description: Something in Rin Chat is broken or behaves wrong.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. Please search the existing issues first, and never paste an API key, password or
+        anything private: issues are public.
+  - type: input
+    id: version
+    attributes:
+      label: Rin Chat version
+      description: Settings → Updates, in the "This version" card.
+      placeholder: "1.0.4"
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - Windows
+        - Linux (AppImage)
+        - Linux (.deb)
+        - Android
+        - Phone browser (remote)
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: OS version
+      placeholder: "Windows 11 24H2, Fedora 41, ..."
+  - type: input
+    id: provider
+    attributes:
+      label: AI provider and model, if it is about replies
+      placeholder: "OpenRouter, deepseek/deepseek-v3.2"
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you saw, and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open ...
+        2. Click ...
+        3. See ...
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Screenshots or logs
+      description: |
+        Drag screenshots in here. The debug log (Settings → Diagnostics → Export the log) contains your prompts and
+        chats, so read it before attaching it, or send it privately in Discord instead.
