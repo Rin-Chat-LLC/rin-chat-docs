@@ -3,6 +3,12 @@ contact_links:
   - name: Ask for help on Discord
     url: https://discord.com/invite/3KHa2QHvwv
     about: Quick help, setup questions, and "is this a bug or am I doing it wrong".
+  - name: Report a bug on Discord instead
+    url: https://discord.gg/KrAsdQ8x9t
+    about: The #bug-reports channel, for back and forth and the fastest answer.
+  - name: Request a feature on Discord instead
+    url: https://discord.gg/CvnnDnq7tC
+    about: The #feature-requests channel.
   - name: Share characters and ask on Reddit
     url: https://www.reddit.com/r/Rinchat/
     about: The Rin Chat community on r/Rinchat.

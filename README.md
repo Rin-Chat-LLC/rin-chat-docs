@@ -19,7 +19,9 @@ the full [user guide](guide/README.md) as Markdown, refreshed with every release
 [existing issues](https://github.com/Rin-Chat-LLC/rin-chat-docs/issues) first; a thumbs-up on one that matches yours
 helps more than a duplicate.
 
-- For quick help, or "is this a bug or am I doing it wrong", ask in [Discord](https://discord.com/invite/3KHa2QHvwv).
+- Prefer Discord? Post in [#bug-reports](https://discord.gg/KrAsdQ8x9t) or
+  [#feature-requests](https://discord.gg/CvnnDnq7tC); each link also joins you to the server. Quick help, or "is
+  this a bug or am I doing it wrong", goes in [Discord](https://discord.com/invite/3KHa2QHvwv) too.
 - To share characters or ask the community, post on [r/Rinchat](https://www.reddit.com/r/Rinchat/).
 - For security problems, do **not** open a public issue. Email info@rin.chat or
   [DM me on Discord](https://discord.com/users/1385702791766610032).
