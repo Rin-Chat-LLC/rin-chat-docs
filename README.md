@@ -3,6 +3,9 @@
 Rin Chat is a free desktop app for AI roleplay with character cards. Use any provider with your own API key, or a
 local model; your chats stay encrypted on your machine. Windows and Linux.
 
+<img width="1280" height="640" alt="Rin Chat Documents_ Cozy Dev Library" src="https://github.com/user-attachments/assets/8c2ce06c-fa05-4c7c-94ce-57d7e910d3e9" />
+
+
 **[Download](https://rin.chat/download/)** · **[Features](https://rin.chat/features/)** ·
 **[Guide](https://rin.chat/guide/)** · **[Update notes](https://rin.chat/changelog/)** ·
 **[Discord](https://discord.com/invite/3KHa2QHvwv)** · **[Reddit](https://www.reddit.com/r/Rinchat/)**
