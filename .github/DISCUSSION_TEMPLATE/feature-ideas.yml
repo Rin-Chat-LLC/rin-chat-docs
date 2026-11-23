@@ -1,10 +1,8 @@
-name: Feature request
-description: Suggest something Rin Chat should do.
-labels: ["enhancement"]
 body:
   - type: markdown
     attributes:
-      value: Please search the existing issues first. A thumbs-up on a matching request counts.
+      value: |
+        Search first: a 👍 on an existing idea counts for more than a duplicate.
   - type: textarea
     id: problem
     attributes:
@@ -22,4 +20,4 @@ body:
     id: elsewhere
     attributes:
       label: Seen it somewhere else?
-      description: Another app that does it well, SillyTavern included, and links or screenshots.
+      description: Another app that does it well, SillyTavern included, with links or screenshots.

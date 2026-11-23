@@ -1,0 +1,30 @@
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Share a character card, lorebook or Adventure Mode game, or ask about writing one. Attach the .png or .json, or link where it is hosted. Only share what you made or have the right to share, and mark NSFW content in the title.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What is it?
+      options:
+        - Character card
+        - Lorebook
+        - Adventure Mode game
+        - Document or chat style
+        - A question about writing one
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: about
+    attributes:
+      label: Tell us about it
+      description: Who or what it is, the model you tested it with, and anything special it does in Rin Chat.
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: Link (optional)
+      placeholder: "https://aicharactercards.com/... or attach the file above"
