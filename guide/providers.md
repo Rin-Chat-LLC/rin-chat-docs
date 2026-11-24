@@ -1,6 +1,6 @@
 # Providers, API Keys and Local Models (LM Studio, Ollama)
 
-> Read this on [rin.chat](https://rin.chat/guide/providers/), with screenshots. Generated from the guide in Rin Chat 1.0.4; changes made here are overwritten by the next release.
+> Read this on [rin.chat](https://rin.chat/guide/providers/), with screenshots. Generated from the guide in Rin Chat 1.0.6; changes made here are overwritten by the next release.
 
 ## Providers & the LLM API
 
@@ -101,6 +101,8 @@ Z.AI, the company behind the GLM models, offers three models that cost nothing t
 ## Sampling & generation settings
 
 Everything about *what* answers and *how* lives in Settings → Generation Configs, as named **configs** you keep several of and switch between. A config is a complete setup: its **provider**, its **model** (plus fallback, tool calling, context and reasoning), and the samplers below them — so switching config switches the model and its settings together, in one click, from the chat header. **A blank sampler is left off the request entirely**, so the server uses its own default and unsupported knobs are simply ignored — that's the right state for anything you aren't deliberately tuning.
+
+**Share a config as a file.** **Export**, at the top of a config, saves it as a small file named after it: the model, samplers, stop sequences and reasoning settings, plus the name of the provider it runs on. Your API key, the provider's address and everything else about the connection stay out of it. **Import config**, under the list, adds a file as a new config and never replaces one you have; a name you already use gets `(copy)`. If you have no provider by the name in the file, the config comes in without one and you're told which provider it was made for, so you can pick yours under Model. A Rin Chat preset exports too, and comes back as an ordinary config you can edit, the same as Duplicate.
 
 **The two that matter most** (top of the panel):
 

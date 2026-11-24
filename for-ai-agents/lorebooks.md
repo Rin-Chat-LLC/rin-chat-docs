@@ -1,6 +1,6 @@
 # Writing Rin Chat lorebooks
 
-> For AI models and tools that write and tune Rin Chat lorebooks. Generated from the app's own Guide on every release (this copy is version 1.0.4), so it matches what the app does. "Settings → …" names a place in the app's Settings.
+> For AI models and tools that write and tune Rin Chat lorebooks. Generated from the app's own Guide on every release (this copy is version 1.0.6), so it matches what the app does. "Settings → …" names a place in the app's Settings.
 
 - A lorebook can be its own file or embedded in a card as `character_book`. Its entry fields: https://rin.chat/card-format.md
 - "Memory & context" and "Prompting & steering" are included because they decide where lore lands in the prompt and what it competes with for space.
@@ -61,6 +61,9 @@ An entry that has fired can pull in another. Write `[recursion: KEY]` in its con
 - **Test**: paste sample chat text and see which entries would activate and why, using the same scanner the chat uses. An entry that another entry pulled in names that entry and the key it matched, so a chain of entries can be traced back to what started it.
 - **✨ Directive**: describe what the book is for, so AI assist writes entries that fit. Stored on your machine, never exported with the book or card.
 - **Sort** is display-only; **Apply as order** renumbers every entry in the book (in tens, so you can slot things in later) to match what you're looking at.
+- **Show**, beside the filter box, narrows the list by how entries fire: enabled or disabled, always on, fired by keys, no keys, no title, secondary keys, in a group, a chance under 100%, delay, sticky or cooldown, recursion options, limited to characters or actions, or one position.
+- **Several entries at once.** Ctrl-click (Cmd-click on a Mac) a row to select it, and Shift-click another to select every row between them. On a phone, or without a keyboard, tap **Select** and then tap rows. The bar that appears can **Enable**, **Disable** or **Delete** them (after asking), **Change a setting** on all of them (always on, position, depth, chance, group, scan depth, matching and recursion options; an Order you type is given to the first and counts up in tens down the list), **Move or copy** them into one of your shared lorebooks, and **Fill empty titles**, which names each untitled one after its first key or the opening words of its content. **Select all** takes every row the filter and Show are showing, so narrow the list first to change just those. Escape clears the selection.
+- **Keyboard:** Tab to a row's arrow, then Up and Down move between rows and Enter opens or closes one.
 
 #### Shared lorebooks
 
@@ -157,8 +160,10 @@ Shape how the model behaves, globally and per chat. The system-prompt side lives
 
 > **Tip:** The **Default** config is read-only: it's the baseline, so it can't drift. Hit **Duplicate** to get an editable copy — that's the answer to "why is everything grayed out?". The one exception is the Author's Note, which you can edit on Default too, because it's your content.
 
+**Export**, at the top of a prompt config, saves it as a file you can share, and **Import config**, under the list, adds one as a new config beside yours. The impersonation model choice stays behind, since it points at a config on your own machine.
+
 - **Main system prompt**: the baseline instruction the model receives. Supports `{{char}}` / `{{user}}`. *Prefer a character's own system prompt* (on by default) lets a card that ships one override this.
-- **Jailbreak prompt**: appended *after* the chat history every turn. **Empty by default**; most modern and open-source models don't need one. Only reach for it if you're getting refusals.
+- **Jailbreak prompt**: appended *after* the chat history every turn. **Empty by default**; most modern and open-source models don't need one. Only reach for it if you're getting refusals. A card's own post-history instructions are sent first and the jailbreak after them. Turn on *Prefer a character's own post-history instructions* (off by default) and a card that ships them sends those instead of the jailbreak, as SillyTavern does; a card that writes `{{original}}` in them still gets the jailbreak, placed there.
 - **Author's Note**: free text injected near the end of the prompt every turn, at a *depth* in turns from the end (default 4) and a *role* (default system). A strong steer for tone or an upcoming beat. What you set here is the **default for new chats** on this config; each chat's own note (the sticky-note button in the chat) overrides it.
 - **Context template** *(advanced)* — the "story string" that lays out the system block: `{{system}}`, `{{wiBefore}}`, `{{generalDescription}}`, `{{appearance}}`, `{{corePersonality}}`, `{{behaviorRules}}`, `{{speechStyle}}`, `{{backgroundHistory}}`, `{{worldSetting}}`, `{{dialogueExamples}}`, `{{wiAfter}}`, with `{{if x}}…{{/if}}` conditionals (comparisons, `&&`, `||`, and `{{.messageCount}}` for "drop this once the chat gets going"). Leave it blank to use the built-in layout. Your **persona is always its own system message** and can't be placed in the template.
 - **Start reply with**: seeds every reply with text the model continues from, e.g. an opening quote to force a format. **Off by default**, and only applied to full replies, not to Continue or Impersonate. Some backends dislike a non-user final message — clear it if replies stop working.

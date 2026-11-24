@@ -1,6 +1,6 @@
 # Use Rin Chat from Your Phone's Browser
 
-> Read this on [rin.chat](https://rin.chat/guide/phone-remote/), with screenshots. Generated from the guide in Rin Chat 1.0.4; changes made here are overwritten by the next release.
+> Read this on [rin.chat](https://rin.chat/guide/phone-remote/), with screenshots. Generated from the guide in Rin Chat 1.0.6; changes made here are overwritten by the next release.
 
 ## Phone remote access
 

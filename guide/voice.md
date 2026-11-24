@@ -1,12 +1,12 @@
 # Voice: Text to Speech and Dictation
 
-> Read this on [rin.chat](https://rin.chat/guide/voice/), with screenshots. Generated from the guide in Rin Chat 1.0.4; changes made here are overwritten by the next release.
+> Read this on [rin.chat](https://rin.chat/guide/voice/), with screenshots. Generated from the guide in Rin Chat 1.0.6; changes made here are overwritten by the next release.
 
 ## Voice: text to speech & dictation
 
 Chats can **talk** — text to speech reads messages aloud — and **listen**: dictation types what you say into the composer. One **voice provider** covers both directions and each direction picks its own backend, so you can read aloud with a bundled voice while a local whisper server does the listening. Add one in Settings → Voice Providers and mark it active; model and voice are picked on the provider itself.
 
-**Reading aloud.** Every message has a speaker button in its hover actions — that works on its own, always. The speaker icon in the **chat header** is separate: it turns on *auto-read* for that one chat, so each new reply is spoken as it finishes. It's off by default and remembered per chat. While a message is speaking you get a pause/resume button beside it.
+**Reading aloud.** Every message has a speaker button in its hover actions — that works on its own, always. The speaker icon in the **chat header** is separate: it turns on *auto-read* for that one chat, so each new reply is spoken as it finishes. It's off by default and remembered per chat. While a message is speaking you get a pause/resume button beside it. Card Forge's guide replies and Direct Chat's have the speaker button too, and the mic works in both. Neither has a character to voice, so they read in the provider's own voice: for Pocket TTS and Chatterbox, the saved voice you made the default, else the built-in one.
 
 **Your own voice.** A persona has a Voice section like any character, and your messages are read in that voice. Turn on **Read my messages too** under Settings → Voice Providers and a chat with auto-read also speaks each message as you send it; the reply waits for it to finish.
 

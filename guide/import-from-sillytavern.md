@@ -1,6 +1,6 @@
 # Import from SillyTavern: Cards, Lorebooks, Presets, Personas
 
-> Read this on [rin.chat](https://rin.chat/guide/import-from-sillytavern/), with screenshots. Generated from the guide in Rin Chat 1.0.4; changes made here are overwritten by the next release.
+> Read this on [rin.chat](https://rin.chat/guide/import-from-sillytavern/), with screenshots. Generated from the guide in Rin Chat 1.0.6; changes made here are overwritten by the next release.
 
 ## Import from SillyTavern
 
@@ -20,12 +20,18 @@ Open a section to tick individual items. Nothing already in Rin Chat is overwrit
 
 #### One file at a time
 
-- **Character cards**: SillyTavern V1, V2 and V3 cards, as PNG or JSON, from the Library's **Import** button or dragged onto the Characters tab (see Characters & the library). The card's embedded lorebook, alternate greetings, depth prompt and regex scripts come with it, and the fields Rin Chat doesn't use are kept and written back when you export it to SillyTavern again. A `.charx` file imports too.
-- **Lorebooks**: a SillyTavern World Info JSON imports on the Library's **Lorebooks** tab with its **Import** button, several files at once, whether its entries are SillyTavern's numbered map or a plain list (see Lorebooks).
+- **Character cards**: SillyTavern V1, V2 and V3 cards, as PNG or JSON, from the Library's **Import** button or dragged onto the Characters tab (see Characters & the library). The card's embedded lorebook, alternate greetings, depth prompt and regex scripts come with it, and the fields Rin Chat doesn't use are kept and written back when you export it to SillyTavern again. A `.charx` file imports too, and an older RisuAI PNG card brings the expressions and pictures stored inside it.
+- **Older characters**: TavernAI cards, Pygmalion and TavernAI JSON characters, and text-generation-webui (oobabooga) YAML characters. These usually sit beside a picture of the same name (`Mira.yaml` and `Mira.png`): import the two together, or their folder with **Import folder**, and the picture becomes the card's portrait.
+- **Characters from other apps**: an Agnai character JSON, its persona written out in the format it was made in (W++, SBF, Boostyle or plain text), and a Backyard AI archive (`.byaf`). From a Backyard AI file the first scenario makes the card, the other scenarios' first messages become alternate greetings, its lore becomes the character's own lorebook, and its other images and scenario backgrounds go into the card's **Images**. Its chats don't come across.
+- **Lorebooks**: a SillyTavern World Info JSON, or a lorebook from NovelAI (`.lorebook`), Agnai or RisuAI, imports on the Library's **Lorebooks** tab with its **Import** button, several files at once, whether its entries are SillyTavern's numbered map or a plain list (see Lorebooks).
 - **Presets**: **Import from SillyTavern**, under the list in Settings → Generation Configs or Settings → System Prompts, reads a preset, context template, system prompt or reasoning template. Prompt Manager blocks are folded into the context template and post-history instructions, with a tick box for each. Before anything is added it shows what came across, what didn't, and any SillyTavern macros Rin Chat doesn't have (those print nothing). The result is new configs; nothing you use changes until you pick them.
 - **Personas**: a persona here is a card. Import or make one like any character, then set its **Card type** in the editor header to **User Persona** (see Personas).
 - **Chats**: a SillyTavern chat file (`.jsonl`) goes into a character from its page, **Tools → Import a chat**. The messages and their alternate replies come across (see Export, import & backup).
-- **Sprite packs**: a SillyTavern expression pack, a zip or images named `joy.png`, `anger.png` and so on, goes in with **Import sprite pack** in the card editor's **Images** section. A sprite pack zip dropped on the library asks which card it's for (see the card format).
+- **Sprite packs**: a SillyTavern expression pack, a zip or images named `joy.png`, `anger.png` and so on, goes in with **Import sprite pack** in the card editor's **Images** section. A sprite pack zip dropped on the library asks which card it's for; open **Show what's inside** there to see every expression first, then click a card to see which of its expressions the pack replaces and which are new before you add it (see the card format).
+
+#### Seeing what's inside
+
+Importing cards, bundles, sprite packs, lorebooks, generators, settings or a backup gives you a **Show what's inside** link, folded away so a quick import is still one click. After cards come in, it sits in the import's message: every file with what it became (imported, already in your library, a match for one of yours, a portrait for a character, or why it failed), and each card with its picture, creator, a rough token count and what came with it, such as lorebook entries, alternate greetings, expressions, pictures, a chat style or regex scripts. A batch of ten files or more shows the same list before anything is saved, with Import and Cancel; a card that matches one of yours is still yours to Replace, keep as New or Skip once you choose Import. Your phone does the same, and lists a bundle it can't import with the reason. A long list shows a page of rows at a time and adds more as you scroll. A bundle also lists its lorebooks, generators and document styles by name. The Lorebooks and Generators tabs list each book or generator they brought in, a lorebook with its first entries and the app it came from, and adding a lorebook to a character that already has one lists the incoming entries before you choose Add or Replace. Importing settings or a full backup shows what would change before you confirm: which settings differ from yours, and which characters and lorebooks replace yours or are new. Nothing from the file is run or styled in this list; it is shown as plain text and pictures.
 
 #### Duplicates
 

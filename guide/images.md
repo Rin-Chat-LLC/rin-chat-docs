@@ -1,6 +1,6 @@
 # AI Image Generation: In Chat, ComfyUI and Image Studio
 
-> Read this on [rin.chat](https://rin.chat/guide/images/), with screenshots. Generated from the guide in Rin Chat 1.0.4; changes made here are overwritten by the next release.
+> Read this on [rin.chat](https://rin.chat/guide/images/), with screenshots. Generated from the guide in Rin Chat 1.0.6; changes made here are overwritten by the next release.
 
 ## Image generation in chats
 
@@ -37,10 +37,12 @@ Generating on your own GPU costs nothing per picture and keeps everything on you
 - Get the node pack from github.com/blueprintcoders/comfyui-rinchat and copy or clone the folder into ComfyUI's `custom_nodes` directory, so you end up with `ComfyUI/custom_nodes/comfyui-rinchat/`. Restart ComfyUI.
 - In ComfyUI, add **Rin Chat · Input** (under the *Rin Chat* category) and wire the outputs you want: `positive` and `negative` into your text encoders, `width`/`height` into the latent, `seed` into the sampler. Unused outputs can dangle.
 - Feed your finished image into **Rin Chat · Output**. It previews like any preview node and writes to ComfyUI's temp folder, so chat rerolls don't fill your output directory — add your own Save Image if you want copies.
-- Press **Queue** once. That's the whole setup: Rin Chat adopts the last workflow you queued in ComfyUI that contains these nodes, and re-adopts it whenever you edit and Queue again. No file exports.
+- Press **Queue** once. That's the whole setup: Rin Chat adopts the last workflow you queued in ComfyUI that contains these nodes and, with one ComfyUI provider, re-adopts it whenever you edit and Queue again. No file exports.
 - In Rin Chat, add the ComfyUI provider, point it at `http://localhost:8188`, and press **Test**. It tells you separately whether the server is reachable and whether the nodes are installed — two problems with completely different fixes.
 
-If you'd rather pin one exact graph, use **Load workflow** with a file saved by ComfyUI's **Save (API Format)** — not the ordinary save, which has no node ids to drive. A pinned workflow stops auto-updating until you Clear it. The **Key** field only matters if one workflow contains more than one Rin Chat Input; leave it blank otherwise.
+**Several workflows**, say one per LoRA for different Discord channels: add a ComfyUI provider for each. Queue a workflow in ComfyUI, open its provider and press **Use last queued**, then do the next. Each provider keeps the workflow it took, and the provider list shows each one's LoRAs or checkpoint so you can see they differ. **Follow ComfyUI** on a provider makes it take whatever you queue most recently instead; it is on by itself when a provider is the only one on its server, and off when another shares it, since providers following one queue would all end up with the same workflow.
+
+To pin one exact graph from a file, use **Load workflow** with a file saved by ComfyUI's **Save (API Format)**, not the ordinary save, which has no node ids to drive. The **Key** field matters if one workflow contains more than one Rin Chat Input, or to let several following providers share a server: give each workflow's nodes and its provider the same key. Leave it blank otherwise.
 
 > **Tip:** **Steps and CFG belong to the model, not to us.** A distilled *turbo* model wants roughly **8 steps at CFG 1**; a standard one wants about 25 at CFG 6–7. Running the first at the second's numbers doesn't give a slightly worse picture, it gives a burnt one — which looks exactly like a broken integration. On ComfyUI, leaving both blank keeps whatever your workflow uses — but Automatic1111 has no such passthrough: blank sends **28 steps at CFG 6.5**, so set them deliberately there.
 

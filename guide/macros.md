@@ -1,6 +1,6 @@
 # Macros and Regex Scripts
 
-> Read this on [rin.chat](https://rin.chat/guide/macros/), with screenshots. Generated from the guide in Rin Chat 1.0.4; changes made here are overwritten by the next release.
+> Read this on [rin.chat](https://rin.chat/guide/macros/), with screenshots. Generated from the guide in Rin Chat 1.0.6; changes made here are overwritten by the next release.
 
 ## Macros
 
@@ -16,7 +16,7 @@ Macros are `{{...}}` tokens expanded when text is sent. Type `{{` — in the mes
 
 #### The chat and its settings
 
-- `{{summary}}` (Chat Memory's summary), `{{authorsNote}}`, `{{defaultAuthorsNote}}`, `{{charAuthorsNote}}` (the card's Character's Note, same as `{{charDepthPrompt}}`), `{{systemPrompt}}` (the one in use), `{{defaultSystemPrompt}}`. In a card's own system prompt, `{{original}}` puts the app's system prompt it replaced.
+- `{{summary}}` (Chat Memory's summary), `{{authorsNote}}`, `{{defaultAuthorsNote}}`, `{{charAuthorsNote}}` (the card's Character's Note, same as `{{charDepthPrompt}}`), `{{systemPrompt}}` (the one in use), `{{defaultSystemPrompt}}`. `{{original}}` puts in the prompt config's text the card field replaces: in a card's system prompt, the config's main system prompt; in its post-history instructions, the config's text sent after the chat (which is then sent there only, not a second time). Anywhere else it is empty.
 - `{{model}}`, `{{maxContextTokens}}`, `{{maxResponseTokens}}`, `{{maxPrompt}}` (context minus response), `{{lastGenerationType}}` (normal, regenerate, continue, impersonate).
 - `{{currentSwipeId}}` / `{{lastSwipeId}}` (which swipe of the last message, and how many), `{{firstIncludedMessageId}}` (the oldest message that fit in the last prompt), `{{idleDuration}}` (how long since your last message), `{{input}}` (what's typed in the box).
 - `{{charPrefix}}` / `{{charNegativePrefix}}` — the card's image prompt prefixes.
@@ -156,7 +156,7 @@ The list fields take a number for one item, counted from 0 (as in SillyTavern).
 | `{{charPrompt}}` | The card's own system prompt. | `{{charPrompt}} → You are {{char}}…` |
 | `{{charInstruction}}` | The card's post-history instructions. | `{{charInstruction}} → Stay in character.` |
 | `{{charDepthPrompt}} / {{charAuthorsNote}}` | The card's Character's Note (depth prompt). | `{{charDepthPrompt}} → Keep replies short.` |
-| `{{original}}` | Inside a card's own system prompt: the app's system prompt it replaced. | `{{original}} Also: never break character.` |
+| `{{original}}` | In a card's system prompt: the prompt config's main system prompt. In its post-history instructions: the config's text sent after the chat, which then goes only there. Empty anywhere else. | `{{original}} Also: never break character.` |
 | `{{charVersion}} / {{version}}` | The card's version. | `{{charVersion}} → 1.2` |
 | `{{charPrefix}} / {{charNegativePrefix}}` | The card's image prompt prefix / negative prefix. | `{{charPrefix}} → 1girl, silver hair` |
 
@@ -320,7 +320,9 @@ Ordered find/replace passes over message text, managed in Settings → Macros & 
 - **Trim strings**: comma-separated bits removed from each match before the replacement runs. Handy for stripping wrapper tags while keeping their contents.
 - **Min / Max depth**: only run on messages within that distance from the end. `0` is the newest message, and both ends are inclusive. Blank means no limit.
 
-A card can carry its own scripts, in the card editor's Regex section, and they run after yours on that character's messages, once you've allowed them for that card. A script imported from a SillyTavern card that sets neither "display only" nor "prompt only" lands on **Message**, because that is what it does in SillyTavern: it edits the stored message.
+A card can carry its own scripts, in the card editor's Regex section, and they run after yours on that character's messages, once you've allowed them. You're asked per script, in the chat: each one shows what it finds, what it puts in its place and where it applies, and you can allow one, allow them all, or keep them off. A script that arrives new or changed (a card updated by an import that replaced its scripts, or one Card Forge wrote) stays off until you allow it again; renaming one doesn't count as a change. A script you write or edit yourself in the card editor counts as allowed. If a script's replacement can put a web address into a message, the question says so: an image there would be fetched from that server, along with whatever the script copied into the address. The editor's **Run these in chat** switch allows or stops every script the card holds.
+
+A script imported from a SillyTavern card that sets neither "display only" nor "prompt only" lands on **Message**, because that is what it does in SillyTavern: it edits the stored message.
 
 Scripts run **in the order they're listed**, which is the order you added them — one script's output is the next one's input.
 

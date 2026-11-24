@@ -1,6 +1,6 @@
 # Lorebooks: Import SillyTavern World Info and Write Entries
 
-> Read this on [rin.chat](https://rin.chat/guide/lorebooks/), with screenshots. Generated from the guide in Rin Chat 1.0.4; changes made here are overwritten by the next release.
+> Read this on [rin.chat](https://rin.chat/guide/lorebooks/), with screenshots. Generated from the guide in Rin Chat 1.0.6; changes made here are overwritten by the next release.
 
 ## Lorebooks
 
@@ -58,6 +58,9 @@ An entry that has fired can pull in another. Write `[recursion: KEY]` in its con
 - **Test**: paste sample chat text and see which entries would activate and why, using the same scanner the chat uses. An entry that another entry pulled in names that entry and the key it matched, so a chain of entries can be traced back to what started it.
 - **✨ Directive**: describe what the book is for, so AI assist writes entries that fit. Stored on your machine, never exported with the book or card.
 - **Sort** is display-only; **Apply as order** renumbers every entry in the book (in tens, so you can slot things in later) to match what you're looking at.
+- **Show**, beside the filter box, narrows the list by how entries fire: enabled or disabled, always on, fired by keys, no keys, no title, secondary keys, in a group, a chance under 100%, delay, sticky or cooldown, recursion options, limited to characters or actions, or one position.
+- **Several entries at once.** Ctrl-click (Cmd-click on a Mac) a row to select it, and Shift-click another to select every row between them. On a phone, or without a keyboard, tap **Select** and then tap rows. The bar that appears can **Enable**, **Disable** or **Delete** them (after asking), **Change a setting** on all of them (always on, position, depth, chance, group, scan depth, matching and recursion options; an Order you type is given to the first and counts up in tens down the list), **Move or copy** them into one of your shared lorebooks, and **Fill empty titles**, which names each untitled one after its first key or the opening words of its content. **Select all** takes every row the filter and Show are showing, so narrow the list first to change just those. Escape clears the selection.
+- **Keyboard:** Tab to a row's arrow, then Up and Down move between rows and Enter opens or closes one.
 
 #### Shared lorebooks
 

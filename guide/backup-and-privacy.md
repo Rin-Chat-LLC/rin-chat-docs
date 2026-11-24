@@ -1,12 +1,14 @@
 # Backup, Export, Account Security and Privacy
 
-> Read this on [rin.chat](https://rin.chat/guide/backup-and-privacy/), with screenshots. Generated from the guide in Rin Chat 1.0.4; changes made here are overwritten by the next release.
+> Read this on [rin.chat](https://rin.chat/guide/backup-and-privacy/), with screenshots. Generated from the guide in Rin Chat 1.0.6; changes made here are overwritten by the next release.
 
 ## Export, import & backup
 
 **Make backups.** The app is local-only: if this computer dies and you have no backup, your recovery kit gets you a working — but empty — vault. The key and the library are two separate things to save.
 
 **Full backup** — Settings → Data & Backup → Export full backup writes a `.rcbak` file to your **Downloads** folder containing every card (with its art and edit history), every chat, lorebooks, folders, and your settings. Large libraries make large files. If anything can't be read — during export or restore — it's skipped and listed for you rather than failing the whole job.
+
+While a backup runs you can keep using the app. Its progress shows what it is on and the file it is writing;**Cancel** stops it and removes the unfinished file. When it finishes, the file's name and size stay on screen with **Show in folder** until you close them. A restore is all or nothing: it reads the whole file before it saves anything, so cancelling it, or a restore that fails, leaves your library exactly as it was. If the app closes during either one, it says so the next time you sign in, and each run is noted in the debug log (Settings → Diagnostics).
 
 > **Tip:** **Pictures generated inside chats are in the backup too** — every image a chat, Direct Chat or Forge session refers to is packed alongside the card art, and restoring puts them back where they were.
 
@@ -76,6 +78,8 @@ Your library is encrypted on this device. Card and chat files are **AES-256-GCM*
 
 **Locking the screen** — the `☰` menu has **Lock screen** (pin it to the bar under Header buttons if you use it often). It covers the desktop behind your password while the vault stays open — useful on a shared computer even with no phone paired, and paired phones keep chatting. Everything under the cover is made unreachable — no clicking, no tab-focus, no text selection, no printing or saving the page — and pairing requests are held back until you unlock. It does not protect against someone reading the running program's memory; the key is in memory, because that's what the phone is being served from. To close the vault completely, sign out instead.
 
+**Pictures from websites in messages**: a picture in a message that points at a website (one the AI wrote, a card's greeting, a regex script's output, anything you pasted) is not loaded until you say so, because loading it tells that site your IP address and when you read the message, and the picture's address can carry text from the chat. In its place is the site's name with **Load** (this picture, until you close the app) and **Always allow** (every picture from that site). Sites you always allow are listed in Settings → Chat Display, where you can remove them. Pictures the app keeps itself, a card's own images and the ones you generate, are never held back. Other ways a message could fetch something from a website, such as a video, a background image in its styling or an alternate picture source, are removed.
+
 **Where things live, and what isn't encrypted**
 
 - Pick the data folder at setup, or move it later in Settings → Data & Backup. Card artwork can also be encrypted at rest — on by default, same panel.
@@ -95,5 +99,7 @@ The full Terms of Service and Privacy Policy live online at rin.chat. This page 
 **Your responsibilities.** You bring your own AI provider: the account, its costs, and compliance with that provider's own terms are between you and them. You are responsible for the content you create and import, and for complying with the laws that apply to you.
 
 **Privacy.** Rin Chat is local-first: your characters, chats, and API keys are stored encrypted on your device and are never uploaded to us. The complete list of what does leave your machine is in Getting started, and every field of the anonymous usage ping — the one mandatory transmission, which identifies an install, never a person — is documented in Usage statistics, alongside the optional categories and their switches. We have no account of yours to hold data against unless you link an AICC account, and no ability to read what the app encrypts.
+
+**Windows crash reports.** On Windows, Rin Chat's screens run in Microsoft's WebView2, the browser engine built into Windows. If it crashes, it writes a crash report that can hold a slice of what was open, and Windows may send it to Microsoft depending on your diagnostic data setting. Rin Chat deletes these reports the next time it starts, but it can't stop Windows from sending one first. To keep them on your PC, turn off optional diagnostic data: on Windows 11, **Settings → Privacy & security → Diagnostics & feedback**, then turn off **Send optional diagnostic data**; on Windows 10, **Settings → Privacy → Diagnostics & feedback**, then choose **Required diagnostic data**. This also applies to Edge and other parts of Windows.
 
 **Changes.** These terms may be updated between versions; material changes will be called out in the release notes. Continuing to use the app after an update is acceptance of the then-current terms. Third-party components are credited in the THIRD-PARTY file that ships with the app.

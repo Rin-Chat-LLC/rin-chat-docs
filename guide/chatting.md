@@ -1,6 +1,6 @@
 # Chatting in Rin Chat: Swipes, Personas and Direct Chat
 
-> Read this on [rin.chat](https://rin.chat/guide/chatting/), with screenshots. Generated from the guide in Rin Chat 1.0.4; changes made here are overwritten by the next release.
+> Read this on [rin.chat](https://rin.chat/guide/chatting/), with screenshots. Generated from the guide in Rin Chat 1.0.6; changes made here are overwritten by the next release.
 
 ## Chatting: the essentials
 
@@ -70,7 +70,7 @@ A **persona** is your side of the roleplay — and it is a **card**, like any ch
 
 **Your default persona** is the one every new chat starts with, unless the character has its own bound persona. Set it from a persona card's right-click menu or its editor's **Tools** menu (**Set as default persona**), the star beside a persona in the chat's persona dropdown, or Settings → Personas. The default wears a *default* badge in the library.
 
-An **adventure persona** is a persona with a character sheet for Adventure mode — abilities, gear, level. Tick **Adventure character sheet** under Metadata (the type stays User Persona) and a **Character sheet** section appears in the editor; the card then shows up in the adventure character builder's "Load a saved adventure persona" list, and characters you build there are saved as these cards.
+An **adventure persona** is a persona with a character sheet for Adventure mode — abilities, gear, level. Tick **Adventure character sheet** in the editor's Adventure Mode Rulesets section (the type stays User Persona) and the **Character sheet** appears under it; the card then shows up in the adventure character builder's "Load a saved adventure persona" list, and characters you build there are saved as these cards.
 
 Two names, two jobs: the **name** is what the model receives as `{{user}}` and what labels your lines in the transcript; the optional **display name** is only for the app's own dropdowns and message headers. Set just the name if you want them the same.
 

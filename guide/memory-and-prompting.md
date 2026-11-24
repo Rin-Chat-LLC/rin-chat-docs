@@ -1,6 +1,6 @@
 # Memory, Context and Prompting
 
-> Read this on [rin.chat](https://rin.chat/guide/memory-and-prompting/), with screenshots. Generated from the guide in Rin Chat 1.0.4; changes made here are overwritten by the next release.
+> Read this on [rin.chat](https://rin.chat/guide/memory-and-prompting/), with screenshots. Generated from the guide in Rin Chat 1.0.6; changes made here are overwritten by the next release.
 
 ## Memory & context
 
@@ -60,8 +60,10 @@ Shape how the model behaves, globally and per chat. The system-prompt side lives
 
 > **Tip:** The **Default** config is read-only: it's the baseline, so it can't drift. Hit **Duplicate** to get an editable copy — that's the answer to "why is everything grayed out?". The one exception is the Author's Note, which you can edit on Default too, because it's your content.
 
+**Export**, at the top of a prompt config, saves it as a file you can share, and **Import config**, under the list, adds one as a new config beside yours. The impersonation model choice stays behind, since it points at a config on your own machine.
+
 - **Main system prompt**: the baseline instruction the model receives. Supports `{{char}}` / `{{user}}`. *Prefer a character's own system prompt* (on by default) lets a card that ships one override this.
-- **Jailbreak prompt**: appended *after* the chat history every turn. **Empty by default**; most modern and open-source models don't need one. Only reach for it if you're getting refusals.
+- **Jailbreak prompt**: appended *after* the chat history every turn. **Empty by default**; most modern and open-source models don't need one. Only reach for it if you're getting refusals. A card's own post-history instructions are sent first and the jailbreak after them. Turn on *Prefer a character's own post-history instructions* (off by default) and a card that ships them sends those instead of the jailbreak, as SillyTavern does; a card that writes `{{original}}` in them still gets the jailbreak, placed there.
 - **Author's Note**: free text injected near the end of the prompt every turn, at a *depth* in turns from the end (default 4) and a *role* (default system). A strong steer for tone or an upcoming beat. What you set here is the **default for new chats** on this config; each chat's own note (the sticky-note button in the chat) overrides it.
 - **Context template** *(advanced)* — the "story string" that lays out the system block: `{{system}}`, `{{wiBefore}}`, `{{generalDescription}}`, `{{appearance}}`, `{{corePersonality}}`, `{{behaviorRules}}`, `{{speechStyle}}`, `{{backgroundHistory}}`, `{{worldSetting}}`, `{{dialogueExamples}}`, `{{wiAfter}}`, with `{{if x}}…{{/if}}` conditionals (comparisons, `&&`, `||`, and `{{.messageCount}}` for "drop this once the chat gets going"). Leave it blank to use the built-in layout. Your **persona is always its own system message** and can't be placed in the template.
 - **Start reply with**: seeds every reply with text the model continues from, e.g. an opening quote to force a format. **Off by default**, and only applied to full replies, not to Continue or Impersonate. Some backends dislike a non-user final message — clear it if replies stop working.

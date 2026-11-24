@@ -1,6 +1,6 @@
 # Build Your Own Adventure Mode Game
 
-> Read this on [rin.chat](https://rin.chat/guide/build-a-game/), with screenshots. Generated from the guide in Rin Chat 1.0.4; changes made here are overwritten by the next release.
+> Read this on [rin.chat](https://rin.chat/guide/build-a-game/), with screenshots. Generated from the guide in Rin Chat 1.0.6; changes made here are overwritten by the next release.
 
 ## Building your own game (step by step)
 
@@ -16,19 +16,19 @@ Nothing here needs code. The rules and the sheet are text you type into boxes on
 
 #### Step 1: Make the Game Master card
 
-Make a new card and set **Card type**, at the top of the card editor, to **Adventure Mode Game Master**. That turns Adventure Mode on for anyone who opens the card, and adds the game boxes (Ruleset, GM style, Extra GM guidance, Character sheet) to the editor's **Features** section.
+Make a new card and set **Card type**, at the top of the card editor, to **Adventure Mode Game Master**. That turns Adventure Mode on for anyone who opens the card, and fills the editor's **Adventure Mode Rulesets** section with the game's settings (Ruleset, GM style, Extra GM guidance, Character sheet, On-screen stats, Story clock).
 
 - **Name it as the narrator**, such as "The Game Master" or "The Keeper", because the name is who the model plays. Put the game's title in **Display name** if you want the library to show that instead.
 - **Description and personality** describe how this game master runs a game: second person, present tense, fair but consequential. Write a narrator, not a companion, or the model will chat with the player instead of running a world around them.
 - **Behavior rules** set the feel of play ("state the stakes before calling for a roll", "a failure changes the situation, it is never undone"). Leave the dice to the ruleset.
 - **World / setting** and **Background** hold the setting and the true situation behind your opening. On the player's first action the app writes a hidden campaign plan from these fields, not from the greeting, so anything the plan needs must be here.
-- **The clock switch** (in Features): leave it on for a game with something ticking, a heist or a deadline; turn it off for open-ended play, where a countdown only invents false urgency.
+- **The clock switch** (in Adventure Mode Rulesets): leave it on for a game with something ticking, a heist or a deadline; turn it off for open-ended play, where a countdown only invents false urgency.
 
 More on writing each of these, with examples: Writing an adventure card.
 
 #### Step 2: Teach it your rules
 
-Out of the box the game master is taught rules that are roughly D&D's. Three boxes in the card's Features section replace that, for this card only:
+Out of the box the game master is taught rules that are roughly D&D's. Three boxes in the card's Adventure Mode Rulesets section replace that, for this card only:
 
 - **Ruleset**: how a check is made and read. Your dice, what a target means, what the sheet's numbers are, what happens on each result, damage, recovery.
 - **GM style**: how the game is run. Pacing, when to call for a roll at all, how spoken words are judged.
@@ -148,7 +148,7 @@ The greeting sets the scene, then offers the way in. These buttons only work in 
 #### Step 7: Make ready-made characters
 
 - **Build one in the builder.** In a chat with your Game Master card, open the builder, make the character, and press **Save as persona card**. The card keeps a copy of your sheet template.
-- **Or make one by hand.** In the Characters library, make a persona card, tick **Adventure character sheet** under Metadata, and pick your game in the **Game** box above the Character sheet. That gives it your abilities to deal and your rules for HP and levels. (The Game box lists every Game Master card in your library that has a sheet template.)
+- **Or make one by hand.** In the Characters library, make a persona card, tick **Adventure character sheet** under Adventure Mode Rulesets, and pick your game in the **Game** box above the Character sheet. That gives it your abilities to deal and your rules for HP and levels. (The Game box lists every Game Master card in your library that has a sheet template.)
 - Players load them from **Load a saved adventure persona** at the top of the builder.
 
 #### Step 8: Test it

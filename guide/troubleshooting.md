@@ -1,6 +1,6 @@
 # Rin Chat Troubleshooting and FAQ
 
-> Read this on [rin.chat](https://rin.chat/guide/troubleshooting/), with screenshots. Generated from the guide in Rin Chat 1.0.4; changes made here are overwritten by the next release.
+> Read this on [rin.chat](https://rin.chat/guide/troubleshooting/), with screenshots. Generated from the guide in Rin Chat 1.0.6; changes made here are overwritten by the next release.
 
 ## Troubleshooting & FAQ
 
@@ -44,6 +44,8 @@ The questions that come up most, and what to check first.
 **My browser says the connection isn't private (phone remote).** Expected — the desktop serves HTTPS with a certificate it generated itself, which no public authority has signed. The traffic is still encrypted. Compare the fingerprint shown in Settings → Remote Access and continue. Phone remote access covers pairing problems.
 
 **Something looks wrong / I want to report a bug.** Session info → Exchanges shows the exact request and response (your API key redacted) — that, and what you expected instead, is almost always enough to diagnose it.
+
+**Reporting a bug.** **Report a bug** is at the top of Settings beside Get support, in Settings → Diagnostics, and in the title bar's ☰ menu. Say how to reach you (email, Discord username, a name, or anonymous), pick where it happened, describe what you did and what went wrong, and add up to five screenshots by choosing, dropping or pasting them. **Attach the debug log** is on by default: the log holds your recent prompts and replies, so it carries chat text, and **Include the prompts and replies** leaves those out while keeping the errors. API keys, tokens, passwords, email addresses and your user folder's name are taken out first, and **View what will be sent** shows the exact text. **What's included** lists the system details that go with every report: the app version, your system, CPU, memory, graphics card, screen and language, and which kind of provider is active, never its address, key or model. Closing the form keeps what you wrote until you quit the app. After sending, you get a report id to mention on Discord. Reports are sent from the computer or the Android app, not from the phone remote.
 
 ## Diagnostics & usage
 
