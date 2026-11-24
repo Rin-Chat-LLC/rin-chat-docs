@@ -1,9 +1,18 @@
+<img src="https://rin.chat/brand/rin-chat-header-logo.png" width="96" height="96" alt="Rin Chat app icon" align="right" />
+
 # Rin Chat
 
-Rin Chat is a free desktop app for AI roleplay with character cards. Use any provider with your own API key, or a
-local model; your chats stay encrypted on your machine. Windows and Linux.
+Rin Chat is a free desktop app for AI roleplay with character cards, made by Rin Chat LLC. Use any provider with
+your own API key, or a local model; your chats stay encrypted on your machine. Windows and Linux.
 
-<img width="1280" height="640" alt="Rin Chat Documents_ Cozy Dev Library" src="https://github.com/user-attachments/assets/8c2ce06c-fa05-4c7c-94ce-57d7e910d3e9" />
+<img width="1280" height="640" alt="Rin Chat banner" src="https://github.com/user-attachments/assets/8c2ce06c-fa05-4c7c-94ce-57d7e910d3e9" />
+
+| | |
+|---|---|
+| <img src="https://rin.chat/promo/rin-chat-overview.webp" alt="Rin Chat Adventure Mode: a boss fight with the character sheet, inventory and stats beside the chat" /> | <img src="https://rin.chat/screenshots/rin-chat-screenshot.webp" alt="Rin Chat character library: cards, folders and personas" /> |
+| Rin Chat Adventure Mode: dice, a character sheet and stats beside the chat | Rin Chat character library |
+
+Official logo and more screenshots: [rin.chat/press](https://rin.chat/press/).
 
 
 **[Download](https://rin.chat/download/)** · **[Features](https://rin.chat/features/)** ·
