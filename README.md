@@ -9,8 +9,10 @@ your own API key, or a local model; your chats stay encrypted on your machine. W
 
 | | |
 |---|---|
-| <img src="https://rin.chat/promo/rin-chat-overview.webp" alt="Rin Chat Adventure Mode: a boss fight with the character sheet, inventory and stats beside the chat" /> | <img src="https://rin.chat/screenshots/rin-chat-screenshot.webp" alt="Rin Chat character library: cards, folders and personas" /> |
-| Rin Chat Adventure Mode: dice, a character sheet and stats beside the chat | Rin Chat character library |
+| <img src="https://rin.chat/screenshots/rin-chat-character-chat.webp" alt="Rin Chat app: a one-on-one chat with a character, her portrait beside each reply" /> | <img src="https://rin.chat/screenshots/rin-chat-group-chat.webp" alt="Rin Chat app: a group chat with four characters replying in turn" /> |
+| Rin Chat: a one-on-one chat | Rin Chat: a group chat with four characters |
+| <img src="https://rin.chat/screenshots/rin-chat-adventure-sheet.webp" alt="Rin Chat Adventure Mode: a skill check dice roll with the character sheet open" /> | <img src="https://rin.chat/screenshots/rin-chat-card-forge.webp" alt="Rin Chat Card Forge: the guide editing a character card's lorebook" /> |
+| Rin Chat Adventure Mode: dice and a character sheet | Rin Chat Card Forge |
 
 Official logo and more screenshots: [rin.chat/press](https://rin.chat/press/).
 
