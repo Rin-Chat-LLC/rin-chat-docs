@@ -1,6 +1,6 @@
 # Macros and Regex Scripts
 
-> Read this on [rin.chat](https://rin.chat/guide/macros/), with screenshots. Generated from the guide in Rin Chat 1.0.6; changes made here are overwritten by the next release.
+> Read this on [rin.chat](https://rin.chat/guide/macros/), with screenshots. Generated from the guide in Rin Chat 1.0.7; changes made here are overwritten by the next release.
 
 ## Macros
 
@@ -44,7 +44,7 @@ Variables are invisible until something prints them, which makes a card that tra
 - An edit here **wins**: it outranks what the transcript would put back, so deleting or regenerating an older message can't quietly undo it.
 - A locked choice re-checks its condition straight away, so setting `has_key` here unlocks the button without waiting for the next reply.
 - Global variables are listed separately. When they are shared, changing one changes it in every chat.
-- Adventure Mode stats aren't here. They live on the character sheet, behind the dice button.
+- Game Mode stats aren't here. They live on the character sheet, behind the dice button.
 
 > **Tip:** What prints matches SillyTavern, so imported cards read the same. **Nothing:** `=`, `+=`, `-=`, `{{setvar}}`, `{{addvar}}`, `{{deletevar}}`. **The value:** `++`, `--`, `??=`, `||=`, `{{incvar}}`, `{{decvar}}`. To set a value and show it, write both: `{{.hp = 10}}{{.hp}}`. A variable's value always prints as written — macros stored inside it don't run.
 
@@ -61,14 +61,14 @@ Define **custom macros** in Settings → Macros & Regex: a name and the text it 
 
 #### Conditionals
 
-`{{if EXPR}}…{{elseif EXPR}}…{{else}}…{{/if}}`. The condition is written *without* braces: `{{if .flag}}`, `{{if .hp < 3}}`, `{{if hasvar::met}}`. Chain as many `{{elseif}}` branches as you like (the first true one wins), combine with `&&`, `||`, `!` (not) and parentheses — `{{if .ready && (.hunger > 0 || .thirst > 0)}}` — and nest freely. Either side of a comparison may be a macro in braces: `{{if .name == {{user}}}}`. A condition is true when it expands to something that isn't empty, `0`, or `false`, `off` or `no` (any case). `{{if::.flag}}` works too. `{{endif}}` works as `{{/if}}`. As in SillyTavern, what's inside a block is trimmed and un-indented, so you can lay it out on its own lines; write `{{#if …}}` to keep its spacing exactly. Any macro that takes an argument can be a block too — `{{setvar backstory}}`…`{{/setvar}}` stores everything between as the value. For mapping one value to text, `{{switch}}` (see Variables) is usually shorter than a chain.
+`{{if EXPR}}…{{elseif EXPR}}…{{else}}…{{/if}}`. The condition is written *without* braces: `{{if .flag}}`, `{{if .hp < 3}}`, `{{if hasvar::met}}`. Chain as many `{{elseif}}` branches as you like (the first true one wins), combine with `&&`, `||`, `!` (not) and parentheses — `{{if .ready && (.hunger > 0 || .thirst > 0)}}` — and nest freely. Either side of a comparison may be a macro in braces: `{{if .name == {{user}}}}`. A plain name that isn't a macro reads the variable of that name when it's set, so `{{if rel_mara_affection >= 40}}` works like `{{if .rel_mara_affection >= 40}}`; a macro of the same name (`char`, `user`, `description`, …) always wins. A condition is true when it expands to something that isn't empty, `0`, or `false`, `off` or `no` (any case). `{{if::.flag}}` works too. `{{endif}}` works as `{{/if}}`. As in SillyTavern, what's inside a block is trimmed and un-indented, so you can lay it out on its own lines; write `{{#if …}}` to keep its spacing exactly. Any macro that takes an argument can be a block too — `{{setvar backstory}}`…`{{/setvar}}` stores everything between as the value. For mapping one value to text, `{{switch}}` (see Variables) is usually shorter than a chain.
 
 #### Randomness
 
 - `{{random::a::b::c}}`: re-rolls each time it's evaluated.
 - `{{weighted::common:5::rare:1}}`: like random, but `text:N` is N times as likely (no number = 1, `:0` = never). Good for loot and encounter tables.
 - `{{pick::a::b::c}}`: *stable*: the same list of options gives the same answer for the whole chat, and a different answer in a different chat. In a lorebook entry each entry gets its own draw.
-- `{{roll::2d6+1}}`, `{{roll::d20}}`, `{{roll::1d6+1d4}}` — dice, added or subtracted. A bare number rolls one die of that size (`{{roll::20}}` is a d20). It reads the same dice the Adventure Mode roll button does: `{{roll::4dF}}` for Fate dice, each face -1, 0 or +1, and `{{roll::3d6kh1}}` to keep the highest of three (`kl` keeps the lowest). A `!` after a die explodes it, `{{roll::1d6!}}`: a top face rolls again and adds. Anything it cannot read returns `0`.
+- `{{roll::2d6+1}}`, `{{roll::d20}}`, `{{roll::1d6+1d4}}` — dice, added or subtracted. A bare number rolls one die of that size (`{{roll::20}}` is a d20). It reads the same dice the Game Mode roll button does: `{{roll::4dF}}` for Fate dice, each face -1, 0 or +1, and `{{roll::3d6kh1}}` to keep the highest of three (`kl` keeps the lowest). A `!` after a die explodes it, `{{roll::1d6!}}`: a top face rolls again and adds. Anything it cannot read returns `0`.
 
 #### Date & time
 

@@ -1,6 +1,6 @@
 # Lorebooks: Import SillyTavern World Info and Write Entries
 
-> Read this on [rin.chat](https://rin.chat/guide/lorebooks/), with screenshots. Generated from the guide in Rin Chat 1.0.6; changes made here are overwritten by the next release.
+> Read this on [rin.chat](https://rin.chat/guide/lorebooks/), with screenshots. Generated from the guide in Rin Chat 1.0.7; changes made here are overwritten by the next release.
 
 ## Lorebooks
 
@@ -39,6 +39,7 @@ All counted in chat messages, `0` = off.
 
 - **Only for these characters / tags**: one box, matched against both the card's name and its tags. Tick **Exclude** to invert it.
 - **Only on these actions**: limit the entry to `normal`, `continue`, `regenerate`, `impersonate`, `swipe` or `quiet` generations. Nothing ticked means every action.
+- **Only while this condition holds**: a condition on the chat's variables, written as in `{{if}}` without the braces, such as `rel_mara_affection >= 40 && world_here == cafe`. While it is false the entry is skipped entirely: it spends no chance roll, starts no sticky or cooldown timer and cannot win its group. Blank means always.
 
 #### Grouping — one of several
 
@@ -78,7 +79,7 @@ Settings → Lorebook Activation holds the activation settings: how many recent 
 
 #### The chat's own lorebook
 
-A third kind, besides a card's book and a shared one: **a lorebook that belongs to one chat and dies with it.** Open it from the book button beside the character sheet and the variables panel. It is not an Adventure Mode feature; any chat can keep one.
+A third kind, besides a card's book and a shared one: **a lorebook that belongs to one chat and dies with it.** Open it from the book button beside the character sheet and the variables panel. It is not a Game Mode feature; any chat can keep one.
 
 It exists for what turns up DURING play. A town of people nobody wrote down before the chat started, a rumor, a room. Those have nowhere good to live otherwise: a variable only reaches the character if something prints it every single turn, the card's own book is permanent and would carry one playthrough's cast into the next, and a shared book outlives the chat as well. A chat-owned book recalls by keyword like any other, so a cast of forty costs nothing in context until one of them is actually mentioned.
 

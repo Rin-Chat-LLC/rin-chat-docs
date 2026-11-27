@@ -1,33 +1,34 @@
-# Writing a Rin Chat Adventure Mode game
+# Writing a game for Rin Chat's Game Mode
 
-> For AI models and tools that write Rin Chat Adventure Mode game cards. Generated from the app's own Guide on every release (this copy is version 1.0.6), so it matches what the app does. "Settings → …" names a place in the app's Settings.
+> For AI models and tools that write Game Master cards for Rin Chat's Game Mode. Generated from the app's own Guide on every release (this copy is version 1.0.7), so it matches what the app does. "Settings → …" names a place in the app's Settings.
 
 How to write the card file:
 
 - A game is an AICC character card. Its full shape and rules: https://rin.chat/card-format.md
-- Make it a game master card: set `metadata.features.card_type` to `"adventure_gm"` and `metadata.features.adventure_mode` to `true`.
-- The editor's game boxes are strings under `metadata.features`: **Ruleset** is `adventure_ruleset`, **GM style** is `adventure_gm_style`, **Extra GM guidance** is `adventure_gm_rules`. Leave a key out to keep the app's default for that box.
+- Make it a game master card: set `metadata.features.card_type` to `"game_master"` and `metadata.features.adventure_mode` to `true`.
+- The editor's game boxes are strings under `metadata.features`: **Ruleset** is `game_ruleset`, **GM style** is `game_gm_style`, **Extra GM guidance** is `game_gm_rules`. Leave a key out to keep the app's default for that box.
 - **Character sheet** is `metadata.features.sheet_template`: the JSON described under "Building your own game", stored as a JSON string.
 - The `[[roll: ...]]`, `[[choice: ...]]` and other markup below is what the game master writes in its replies. Teach it through the Ruleset and GM style boxes and show it in the greetings.
 
-## Adventure mode
+## Game Mode
 
-Adventure mode turns a chat into a game-mastered adventure: the character (written as a GM) offers **choice buttons**, demands **dice rolls**, and keeps a live **character sheet** the story updates as you play. The app referees — it rolls the dice and applies the stat changes; the model only ever asks. Works with any model — how well it plays GM depends on the model.
+Game Mode turns a chat into a game-mastered adventure: the character (written as a GM) offers **choice buttons**, demands **dice rolls**, and keeps a live **character sheet** the story updates as you play. The app referees — it rolls the dice and applies the stat changes; the model only ever asks. Works with any model — how well it plays GM depends on the model.
 
-> **Tip:** Quickest way to try it: your library already contains the **Adventure Mode Narrator**, a card built for this. Start a chat with it — nothing to configure.
+> **Tip:** Quickest way to try it: your library already contains the **Game Mode Narrator**, a card built for this. Start a chat with it — nothing to configure.
 
-**Turning it on:** it's carried by the *card*, not a setting. Adventure-built cards enable it automatically for their own chats; flag any card yourself by setting its **Card type** (the dropdown in the card editor's header) to *Adventure Mode Game Master*. Ordinary cards carry none of it.
+**Turning it on:** it's carried by the *card*, not a setting. Game Master cards enable it automatically for their own chats; flag any card yourself by setting its **Card type** (the dropdown in the card editor's header) to *Game Master*. Ordinary cards carry none of it.
 
 **Playing:**
 
 - **Choices**: click to take the action; some carry costs ("Bribe him (5 gold)") that hit the sheet the moment you pick them, so the GM can't charge you twice. **Shift-click** a choice and the model performs it *in your voice* instead of sending the plain label. You can always ignore the buttons and just type.
 - **Rolls**: the GM states what you're rolling for and what's at stake, but **the app rolls the dice**. Typing "I rolled a 20" does nothing — a 🎲 you type is stripped from your message, and a 🎲 line the *GM* writes is deleted before the reply is saved. Only the app's reports are real. Results render as dice cards — success/failure vs the difficulty, nat-20 shimmer, and damage on successful attacks (rolled by the app, applied exactly by the GM). Sometimes you'll get **two or three rolls side by side** for genuinely different tactics — take one.
+- **Rolling your own dice**: turn on **Roll my own dice** in the sheet's Game settings and each roll becomes a request instead ("Roll 1d20 + 3 for Stealth", with the target): roll at your table, type the total and send it. When an attack hits, it asks for your damage too. The GM takes your number as stated, and a result you type in the chat ("I rolled a 14") counts the same. It is per chat and off by default.
 - **Your abilities move the dice.** When a roll leans on one of your abilities the app looks the score up on your sheet, applies the classic modifier, and names it on the button ("Roll Stealth (dexterity +2)") — a forgetful GM can't ignore your scores and an eager one can't count them twice.
 - **Social rolls**: a say-box appears: what you actually say travels with the dice, and a good pitch legitimately tilts the result (a stated −6 to +6, never more — enough to carry a bad roll). The mask button drafts the line in your character's voice; **Shift-click the mask** to give it directions first ("be humble, mention the ring") and preview the draft before it drops into the box. `Enter` rolls, `Shift+Enter` adds a newline, and leaving the box empty just rolls normally.
 
 **Your character:** the greeting's create-your-character button (or the person icon at the top of the sheet, once the greeting scrolls past) opens the builder — name, class, abilities (roll 4d6-drop-lowest then drag each score onto the ability you want, 27-point buy, or **manual entry** — honor system, type the scores in to bring a real tabletop character over as-is; rename, add or remove abilities to fit any genre), hp, level & XP, starting inventory, and notes to the GM. Give them a **portrait** too — upload one or generate it with AI, same generator the card art uses; it shows at the top of the sheet. **Complete sheet for me** first asks what you want them to be (optional: leave it empty and the AI decides), then fills only the fields you left *empty* (never your numbers, never overpowered gear); **Cancel** stops it mid-flight. *Use for this chat* stays disabled until the character has a name and every rolled score has been placed.
 
-**Saving and reusing characters:** **Save as persona card** keeps a reusable copy in your library; load it later from the *Load a saved adventure persona* dropdown at the top of the builder. A character you loaded shows **Update persona card** instead (it edits that card rather than making a duplicate); to get rid of one, delete the persona card from the library. **Use for this chat** starts playing with the sheet, and **Play without a sheet** skips character creation entirely. In an adventure chat your character replaces your regular persona, so {{user}} *is* them — your normal persona is untouched everywhere else. Reopening the builder mid-game is safe: it re-applies your abilities, class and level, but leaves hp, max hp, XP and everything you picked up in play exactly as play left them.
+**Saving and reusing characters:** **Save as persona card** keeps a reusable copy in your library; load it later from the *Load a saved game persona* dropdown at the top of the builder. A character you loaded shows **Update persona card** instead (it edits that card rather than making a duplicate); to get rid of one, delete the persona card from the library. **Use for this chat** starts playing with the sheet, and **Play without a sheet** skips character creation entirely. In a Game Mode chat your character replaces your regular persona, so {{user}} *is* them — your normal persona is untouched everywhere else. Reopening the builder mid-game is safe: it re-applies your abilities, class and level, but leaves hp, max hp, XP and everything you picked up in play exactly as play left them.
 
 **The sheet** (🎲 in the right sidebar) keeps bars such as hp pinned at the top, above tabs that sort the rest by name prefix: *Character*, *Inventory* (your *Money* sits there too), *Other* for anything unprefixed, and *DM* while spoilers are on. A tab only shows when it has something in it, and with no Character tab the unprefixed stats are simply *Stats*. There's a history of every change, and each entry jumps to the message that did it.
 
@@ -37,7 +38,7 @@ Adventure mode turns a chat into a game-mastered adventure: the character (writt
 - **Right-click a stat** (on a touch screen, tap the **⋯** beside it) to **rename or move** it between sections (the dialog shows you exactly what the GM will see) or to **delete** it.
 - Your edits are the truth the GM must respect, and they **outrank the story** — a stat you fix or delete by hand stays fixed even if you later delete or reroll an older message. (An old message that *runs again* can still re-emit its own changes, and a GM that no longer sees a stat may recreate it — that's the story happening, not the sheet losing your edit.)
 
-**Stats on screen.** A strip at the top of the chat keeps your numbers in view while you play. Unless the card picks its own, it shows your hp, level and XP, any other stat with a maximum, your money, and the location, day, time or date when the game tracks them (up to eight), then the card's meters and the clocks you're allowed to see. Each has an icon. Hp, meters, clocks and anything with a maximum draw a bar, and XP's bar is your progress through the current level; the rest show their value. During a fight the strip adds the turn order, and each name in it carries that fighter's health: a heart, their HP, and a small bar when their maximum is known. **Show less** folds it to one sideways row (still showing whose turn it is, with their HP) and the arrow, **Show more**, opens it again. On a phone it starts folded.
+**Stats on screen.** A strip at the top of the chat keeps your numbers in view while you play. Unless the card picks its own, it shows your hp, level and XP, any other stat with a maximum, your money, and the location, day, time or date when the game tracks them (up to eight), then the card's meters and the clocks you're allowed to see. Each has an icon. Hp, meters, clocks and anything with a maximum draw a bar, and XP's bar is your progress through the current level; the rest show their value. During a fight the strip adds the turn order, and each name in it carries that fighter's health: a heart, their HP, and a small bar when their maximum is known. The small arrow at the end of the stats row, **Show less**, folds it to one sideways row that still shows the whole turn order with each fighter's health, and **Show more** opens it again. On a phone it starts folded.
 
 **Choosing what it shows:** open **On-screen stats** in the sheet. **Show stats in the chat** turns the whole strip off for this chat, fights included, and a checkbox per stat adds or removes it, starting from the card's picks. Tap a stat's icon to pick another from the icon grid (**Automatic** goes back to the card's), and use the arrows to move it up or down the strip. The choices are saved with this chat only, and stats the card adds in a later update still appear. DM stats are never on the strip.
 
@@ -49,35 +50,35 @@ Adventure mode turns a chat into a game-mastered adventure: the character (writt
 
 **The GM tidies up too.** It can drop stats that are finished — a slain enemy's hp, a clock that ran out, an item used for good. It can only drop *its own* stats and consumables; your character's abilities, hp, level and XP are yours alone and the app refuses anything else. Gear that's confiscated rather than destroyed **moves to whoever took it** instead of vanishing, so it comes back intact when you get your pack off the warden (turn on spoilers if you want to watch it sitting there).
 
-**Levelling** is the app's job, not the GM's: every 100 XP earns a level, and you get a dialog with the HP it adds and **two points to raise abilities** (up to 18) — spend them, or take *Skip the points* to bank the level and the HP without them. Earn two levels at once and you get both, and all four points, in one go. Your current HP rises by exactly what the maximum did, so levelling is never a free heal. It works off the sheet, so XP you type in by hand levels exactly like XP the GM awarded — but it needs a character: a sheet-less adventure never levels.
+**Levelling** is the app's job, not the GM's: every 100 XP earns a level, and you get a dialog with the HP it adds and **two points to raise abilities** (up to 18) — spend them, or take *Skip the points* to bank the level and the HP without them. Earn two levels at once and you get both, and all four points, in one go. Your current HP rises by exactly what the maximum did, so levelling is never a free heal. It works off the sheet, so XP you type in by hand levels exactly like XP the GM awarded — but it needs a character: a sheet-less game never levels.
 
 **House rules the app enforces:** healing can never push past your max HP; deleting, rerolling or swiping a message **reverses its stat changes** (with a "Sheet reverted" notice, so a refund is never silent); and at 0 hp you're never killed — the app puts you back at **5 hp**, weak but alive, and the GM narrates the setback. Turn on **Hard mode** in the sheet's settings and 0 hp is a real death: final, and the sheet won't let you edit that hp back up. Rests are house rules the GM is *taught* rather than rules the app enforces — a short rest heals a chunk, a long rest restores you to full — so a weaker model may play them loosely.
 
-**Making your own?** See Writing an adventure card.
+**Making your own?** See Writing a Game Mode card.
 
-> **Tip:** Adventure chats work best with a model that follows instructions well — the app referees the mechanics, but the storytelling is all the model's.
+> **Tip:** Game Mode chats work best with a model that follows instructions well — the app referees the mechanics, but the storytelling is all the model's.
 
 #### Being the DM yourself
 
 The same machinery runs backwards: **you** game-master, and the AI characters are the players. Open any chat that has a character in it, click the **dice button** in the sidebar, and turn on **I’m the DM**. No game-master card is needed — a one-on-one chat works (a party of one), and so does a group.
 
-- **Everyone at the table gets a sheet.** The app stats each character up from their card — or reads the sheet the card already carries (card editor → *Adventure Mode Rulesets → Adventure character sheet*). Every number is yours to edit in the sidebar: abilities, HP, level, XP, inventory, and stats you invent yourself — HP and XP take `-6` or `+50` as well as a plain number. Award enough XP and a **level-up** button appears, which adds the level and its hit points and leaves the ability points to you.
+- **Everyone at the table gets a sheet.** The app stats each character up from their card — or reads the sheet the card already carries (card editor → *Game features → Game character sheet*). Every number is yours to edit in the sidebar: abilities, HP, level, XP, inventory, and stats you invent yourself — HP and XP take `-6` or `+50` as well as a plain number. Award enough XP and a **level-up** button appears, which adds the level and its hit points and leaves the ability points to you.
 - **Players state attempts, never outcomes.** A character reaching for something they could fail at ends their message with an attempt, and a roll box appears under it. You pick the ability and difficulty (or, for a game with its own dice, whatever its sheet says a check is made of: see Building your own game), optionally write *what happens if they succeed* and *if they fail* — before rolling, which is the point — and press Roll. Only the branch that actually happened is sent. Your choices stay on that message, so deleting the result and rolling again finds them still there.
 - **Call for a check nobody asked for** from the roster in the sidebar — "everyone roll Perception" — with the same box.
 - **Go round the table** with the **▶ Round** button above the composer: each player takes a turn in order, so everyone reacts to the scene before it comes back to you.
 - **The greeting is set aside** when you turn DM mode on: the opening scene is yours to write. Turn it off and the card’s own greeting comes back.
-- **Your notes stay yours.** Two tags, and the difference matters: `[co]…[/co]` stays *on your screen* and is never sent to anyone — the trap they haven’t found, who is lying, what happens if they open the box. `[h]…[/h]` is the opposite: it disappears from the chat and is withheld from every player’s prompt, but your own AI-assist draft still sees it — a note to your co-writer rather than to yourself. (In ordinary adventure mode `[h]` goes to the model, because there the model is the referee.) The stat board’s *npc_* and *dm_* stats are private the same way, and the notes panel (📓 in the toolbar) keeps longer material per chat.
+- **Your notes stay yours.** Two tags, and the difference matters: `[co]…[/co]` stays *on your screen* and is never sent to anyone — the trap they haven’t found, who is lying, what happens if they open the box. `[h]…[/h]` is the opposite: it disappears from the chat and is withheld from every player’s prompt, but your own AI-assist draft still sees it — a note to your co-writer rather than to yourself. (In ordinary Game Mode `[h]` goes to the model, because there the model is the referee.) The stat board’s *npc_* and *dm_* stats are private the same way, and the notes panel (📓 in the toolbar) keeps longer material per chat.
 - **Stuck for words?** The impersonate button drafts *your* next turn as the game master — scene, NPCs and consequences — rather than a character’s reply.
 
 > **Tip:** The dice are still the app’s: a 🎲 line a player writes is stripped as a forgery, so the only real results are the ones you rolled.
 
-## Writing an adventure card
+## Writing a Game Mode card
 
 The most important thing to know: **the app already teaches the game mechanics.** Every turn, the model receives the directive syntax, the referee rules (app-rolled dice, stat namespaces, rests, the works) and the live character sheet. Your card's job is everything the app *can't* supply: **who the GM is, what the world is, and how the adventure opens.** Don't spend card tokens re-explaining syntax — demonstrate it instead (see dialogue examples below). Those mechanics are roughly D&D's by default, and a card can REPLACE them with another tabletop system: see *Teaching it a different tabletop system* at the end of this section.
 
 Already handled for you, every turn, so your card never needs to say it: the app applies ability modifiers to rolls, deletes any dice line the GM writes itself, teaches the GM to drop finished stats with `[[unstat:]]` (and refuses when it aims at the player's own), teaches it to move confiscated gear to whoever took it instead of deleting it, reminds it every turn that its own `npc_`/`dm_` values are its to *move*, and seeds a starting set of them from the campaign plan.
 
-**1. Write the character as a narrator, not a companion.** Name it like one ("The Dungeon Master", "Adventure Mode Narrator") and make the description about its *style of running a game*: second person, present tense; fair but consequential; never speaks or decides for the player. A card written as a companion character will chat *with* the player instead of running a world *around* them.
+**1. Write the character as a narrator, not a companion.** Name it like one ("The Dungeon Master", "Game Mode Narrator") and make the description about its *style of running a game*: second person, present tense; fair but consequential; never speaks or decides for the player. A card written as a companion character will chat *with* the player instead of running a world *around* them.
 
 **2. The greeting is the front door.** Set the opening scene in a few paragraphs, then offer the starting buttons. `[[character]]` and `[[starter_choice: …]]` are *opening-only* — they run character creation, and the GM is told never to emit them once play has begun:
 
@@ -123,17 +124,17 @@ Track Kisa's affection in meter_kisa_affection, 0 to 10 (meter_kisa_affection_ma
 [[stat: meter_kisa_affection +1]]
 ```
 
-**Choose the on-screen stats.** An Adventure Mode Game Master card's **Adventure Mode Rulesets** section has an **On-screen stats** list, below the Character sheet box: the stats the chat's strip shows, in your order, each with an optional label and an icon from the icon grid (*Automatic* picks one from the name). The arrows set the order, and a player can still pick their own icons and order in their sheet. Write a stat without the player's prefix, `hp` rather than `ava_hp`, and it finds each player's own; up to 12. **Leave it empty and the chat picks them from the sheet** (hp, level, XP, money and anything with a max). Meters and visible clocks are always added after your list, and players can still hide or add stats from their sheet. Each row's **More** adds named levels (like 1 to 20 Critical, 21 to 50 Wounded) and short **Raises it** / **Lowers it** lines; the player sees them on the stat's card, with the current level beside the value on the strip, and the game master is told them as well, so the story keeps to your levels and causes. Card Forge can write this list for you.
+**Choose the on-screen stats.** A Game Master card's **Game features** section has an **On-screen stats** list, under Play: the stats the chat's strip shows, in your order, each with an optional label and an icon from the icon grid (*Automatic* picks one from the name). The arrows set the order, and a player can still pick their own icons and order in their sheet. Write a stat without the player's prefix, `hp` rather than `ava_hp`, and it finds each player's own; up to 12. **Leave it empty and the chat picks them from the sheet** (hp, level, XP, money and anything with a max). Meters and visible clocks are always added after your list, and players can still hide or add stats from their sheet. Each row's **More** adds named levels (like 1 to 20 Critical, 21 to 50 Wounded) and short **Raises it** / **Lowers it** lines; the player sees them on the stat's card, with the current level beside the value on the strip, and the game master is told them as well, so the story keeps to your levels and causes. Card Forge can write this list for you.
 
 **6. The campaign plan reads your card.** On the player's first action the app writes a hidden arc from your card's description, personality, behavior rules, setting, background and system prompt — but *not* from your greetings or dialogue examples (the opening scene is passed separately). If the true situation behind your opening lives only in a greeting, move it into the description or the setting so the planner can build on it.
 
-**7. Ship it right.** Set the editor's **Card type** to *Adventure Mode Game Master* (this is what auto-enables the mode for whoever imports the card — it travels in JSON and PNG exports), tag it so it's findable, and use Creator notes to tell players what to expect (difficulty, themes, whether a character sheet matters).
+**7. Ship it right.** Set the editor's **Card type** to *Game Master* (this is what auto-enables the mode for whoever imports the card — it travels in JSON and PNG exports), tag it so it's findable, and use Creator notes to tell players what to expect (difficulty, themes, whether a character sheet matters).
 
 > **Tip:** Test-play a few turns and watch the sheet: if stats drift or rolls come without stakes, add a dialogue example demonstrating the exact behavior you want — weaker models need more example coverage, not more rules.
 
 #### Teaching it a different tabletop system
 
-Everything above describes the rules the app teaches by default, which are roughly D&D's. If your game is Fate, Powered by the Apocalypse, Cortex, Forged in the Dark or something you wrote yourself, **a card can replace them.** An Adventure Mode Game Master card carries three boxes in the card editor's **Adventure Mode Rulesets** section: **Ruleset** (how a roll is read: what a target number means, modifiers, damage, rests), **GM style** (how the game is run: pacing, when to call for a roll at all) and **Extra GM guidance**, which is added on top and replaces nothing. A card's text beats the same boxes in Settings, so a game you share is self-contained: whoever opens it plays your system without changing a setting.
+Everything above describes the rules the app teaches by default, which are roughly D&D's. If your game is Fate, Powered by the Apocalypse, Cortex, Forged in the Dark or something you wrote yourself, **a card can replace them.** A Game Master card carries three boxes in the card editor's **Game features** section, under Rules: **Ruleset** (how a roll is read: what a target number means, modifiers, damage, rests), **GM style** (how the game is run: pacing, when to call for a roll at all) and **Extra GM guidance**, which is added on top and replaces nothing. A card's text beats the same boxes in Settings, so a game you share is self-contained: whoever opens it plays your system without changing a setting.
 
 What you cannot replace is the part the app's own parsers read: the directives, the dice grammar and the sheet. That is sent every turn whatever your ruleset says, which is exactly why rewriting the rest cannot break the choice buttons, the character sheet or undo.
 
@@ -155,7 +156,7 @@ What you cannot replace is the part the app's own parsers read: the directives, 
 - **Say what to DO on each outcome, not just what the bands are called.** A table of bands was not enough: the model read "6 or less is a hard move" and then offered another roll. Phrase them as instructions to the game master.
 - **Repeat the dice clause.** Name it in the rule, show it in the example, and say what it is called, or the same ruleset will produce `2d6kh1` in one run and a bare `2d6` in the next, which are very different odds.
 
-> **Tip:** Check it landed before you play: open the prompt inspector on a reply and confirm your own words are in there and the default ruleset is not. The context meter is not that check, because its Adventure ruleset row looks identical whether the text is yours or the built-in one.
+> **Tip:** Check it landed before you play: open the prompt inspector on a reply and confirm your own words are in there and the default ruleset is not. The context meter is not that check, because its Game ruleset row looks identical whether the text is yours or the built-in one.
 
 ## Building your own game (step by step)
 
@@ -163,7 +164,7 @@ Everything you need to turn a tabletop system, a published one or your own, into
 
 #### What a game is made of
 
-- **A Game Master card.** One card whose **Card type** is **Adventure Mode Game Master**. It IS the game: the narrator, the world, the rules, the character sheet and the lore all live on it.
+- **A Game Master card.** One card whose **Card type** is **Game Master**. It IS the game: the narrator, the world, the rules, the character sheet and the lore all live on it.
 - **Persona cards** (optional): ready-made characters, for players who want to start without building one.
 - **A bundle**: one `.aicc` file holding the Game Master card, any persona cards and their art. It is how you hand the whole game to someone else.
 
@@ -171,25 +172,29 @@ Nothing here needs code. The rules and the sheet are text you type into boxes on
 
 #### Step 1: Make the Game Master card
 
-Make a new card and set **Card type**, at the top of the card editor, to **Adventure Mode Game Master**. That turns Adventure Mode on for anyone who opens the card, and fills the editor's **Adventure Mode Rulesets** section with the game's settings (Ruleset, GM style, Extra GM guidance, Character sheet, On-screen stats, Story clock).
+Make a new card and set **Card type**, at the top of the card editor, to **Game Master**. That turns Game Mode on for anyone who opens the card, and fills the Rules group of the editor's **Game features** section with the game's settings (Ruleset, GM style, Extra GM guidance, Character sheet template, Countdown clock; the On-screen stats sit under Play). The **Game Mode** switch or preset there does the same as this Card type.
 
 - **Name it as the narrator**, such as "The Game Master" or "The Keeper", because the name is who the model plays. Put the game's title in **Display name** if you want the library to show that instead.
 - **Description and personality** describe how this game master runs a game: second person, present tense, fair but consequential. Write a narrator, not a companion, or the model will chat with the player instead of running a world around them.
 - **Behavior rules** set the feel of play ("state the stakes before calling for a roll", "a failure changes the situation, it is never undone"). Leave the dice to the ruleset.
 - **World / setting** and **Background** hold the setting and the true situation behind your opening. On the player's first action the app writes a hidden campaign plan from these fields, not from the greeting, so anything the plan needs must be here.
-- **The clock switch** (in Adventure Mode Rulesets): leave it on for a game with something ticking, a heist or a deadline; turn it off for open-ended play, where a countdown only invents false urgency.
+- **The clock switch** (Countdown clock, under Game features): leave it on for a game with something ticking, a heist or a deadline; turn it off for open-ended play, where a countdown only invents false urgency.
 
-More on writing each of these, with examples: Writing an adventure card.
+More on writing each of these, with examples: Writing a Game Mode card.
 
 #### Step 2: Teach it your rules
 
-Out of the box the game master is taught rules that are roughly D&D's. Three boxes in the card's Adventure Mode Rulesets section replace that, for this card only:
+Out of the box the game master is taught rules that are roughly D&D's. Three boxes in the card's Game features section, under Rules, replace that, for this card only:
 
 - **Ruleset**: how a check is made and read. Your dice, what a target means, what the sheet's numbers are, what happens on each result, damage, recovery.
 - **GM style**: how the game is run. Pacing, when to call for a roll at all, how spoken words are judged.
 - **Extra GM guidance**: added after everything else and replaces nothing. House rules and the things this particular game needs its game master to know.
 
 A card's text beats the same boxes in Settings, so the game is self-contained: whoever opens it plays your rules without changing a setting. What your text cannot replace is the part the app itself reads, the directives, the dice grammar and the sheet, which is sent every turn. That is why rewriting the rules can never break the buttons, the dice or the character sheet.
+
+**Start from a system.** The **Start from a system** list above the Ruleset box fills the Ruleset and Character sheet template boxes with a plain-words starting point for Powered by the Apocalypse, Fate or Cortex games: the dice, a worked roll line, what each result means, the game's resources, and a sheet to deal. It is your text from then on, so rename the stats and add your own moves, aspects or traits. If either box already holds text of your own, it asks before replacing it; GM style and Extra GM guidance are never touched.
+
+**Or ask Card Forge.** On a Game Mode card, the Forge's guide can write all four boxes (Ruleset, GM style, Extra GM guidance and Character sheet template): "use the Fate preset", "add a house rule that nobody comes back from the dead", "give the sheet Cool, Hard and Sharp". Each change is shown for review first, and a character sheet the app cannot read is flagged and never saved.
 
 **A ruleset that works covers these, in this order:**
 
@@ -206,11 +211,11 @@ A card's text beats the same boxes in Settings, so the game is self-contained: w
 - `[[stat: <name> = <value>]]`, `[[stat: <name> +2]]`, `[[unstat: <name>]]`. Names say whose a stat is: the player's own sheet uses their name as a prefix (the game master must not put conditions there), `inv_` is inventory, `money_` is money, `npc_<who>_<what>` tracks a character the game master runs, `dm_<what>` is anything else on the game master's side of the screen, and `dm_<player>_<what>` is a condition put on the player (stress, a wound, a curse). `clock_<name> = 2/6` draws a progress dial. The npc_ and dm_ stats are hidden from the player.
 - `[[choice: <action> | <effects>]]` offers buttons; see Choices & interactive replies.
 
-**Dice the app can roll:** `1d20+2` and anything shaped like it, `4dF` (Fate and Fudge dice), `3d6kh1` and `2d6kl1` to keep the best or worst, `d8+d6+d10` to add different dice, and `(d8+d6+d10)kh2` to keep the best two across different dice. **Not supported:** dice that explode on their maximum (have the game master call for a second roll instead), and counting successes across a pool (leave the target off; the app prints every face, and your ruleset tells the game master how to count them).
+**Dice the app can roll:** `1d20+2` and anything shaped like it, `4dF` (Fate and Fudge dice), `3d6kh1` and `2d6kl1` to keep the best or worst, `d8+d6+d10` to add different dice, and `(d8+d6+d10)kh2` to keep the best two across different dice. A `!` after a die makes it explode: `1d6!` rolls again on a 6 and adds it. **Not supported:** counting successes across a pool (leave the target off; the app prints every face, and your ruleset tells the game master how to count them).
 
 #### Step 3: Describe your character sheet
 
-The **Character sheet** box, under the ruleset, tells the app what a character in your game looks like. Without it the character builder makes a D&D character: six D&D abilities, then 4d6 or a 27-point buy. It is written as JSON. Every field:
+The **Character sheet template** box, under the ruleset, tells the app what a character in your game looks like. Without it the character builder makes a D&D character: six D&D abilities, then 4d6 or a 27-point buy. It is written as JSON. Every field:
 
 ```
 {
@@ -265,7 +270,7 @@ Without `roll`, the app picks: a sheet counted in dice rolls a pool, a D&D-shape
 
 **When the AI runs the game**, the game master writes its own `[[roll:]]` lines from your ruleset, and the method decides how the app judges and reports them: a pool is rolled by Cortex rules, a `vs` number on a roll-under game succeeds at or under it, and the dice card says *Target* (or *Under*) rather than D&D's *DC*.
 
-**When a player is the DM** (see Adventure mode), the roll box under a party member's attempt builds the check from that member's sheet: an ability and a DC for the d20; an ability and an optional target for "add"; one trait from each block, any extra dice and an optional target for a pool; an ability for roll-under. Every roll box also has a dice field: type any dice there to roll them instead. A roll with no target reports the number with no verdict, and then neither of the DM's outcome notes is sent.
+**When a player is the DM** (see Game Mode), the roll box under a party member's attempt builds the check from that member's sheet: an ability and a DC for the d20; an ability and an optional target for "add"; one trait from each block, any extra dice and an optional target for a pool; an ability for roll-under. Every roll box also has a dice field: type any dice there to roll them instead. A roll with no target reports the number with no verdict, and then neither of the DM's outcome notes is sent.
 
 **Cortex rules, as the app applies them to a pool:** every die is rolled; a die showing 1 is a *hitch* and counts for nothing; the best `keep` of the rest are added up; the largest die left over is the *effect die* (a d4 if none is left); and all 1s is a *botch*. When two dice show the same face, the smaller one goes into the total, which leaves the bigger free to be the effect die. The dice card shows the effect die and any hitches, and the game master reads them in the report line.
 
@@ -303,8 +308,8 @@ The greeting sets the scene, then offers the way in. These buttons only work in 
 #### Step 7: Make ready-made characters
 
 - **Build one in the builder.** In a chat with your Game Master card, open the builder, make the character, and press **Save as persona card**. The card keeps a copy of your sheet template.
-- **Or make one by hand.** In the Characters library, make a persona card, tick **Adventure character sheet** under Adventure Mode Rulesets, and pick your game in the **Game** box above the Character sheet. That gives it your abilities to deal and your rules for HP and levels. (The Game box lists every Game Master card in your library that has a sheet template.)
-- Players load them from **Load a saved adventure persona** at the top of the builder.
+- **Or make one by hand.** In the Characters library, make a persona card, tick **Game character sheet** under Game features, and pick your game in the **Game** box above the Character sheet. That gives it your abilities to deal and your rules for HP and levels. (The Game box lists every Game Master card in your library that has a sheet template.)
+- Players load them from **Load a saved game persona** at the top of the builder.
 
 #### Step 8: Test it
 
@@ -325,7 +330,7 @@ The greeting sets the scene, then offers the way in. These buttons only work in 
 
 #### Finished examples
 
-Each is a Character sheet box and the core of a matching ruleset. Adjust names and numbers to your game.
+Each is a Character sheet template box and the core of a matching ruleset. Adjust names and numbers to your game.
 
 **Fate Core style**: skills as ladder ratings, a skill pyramid, 4dF plus the skill.
 
@@ -412,18 +417,18 @@ The app judges at or under. Read the bands yourself: under half is a hard succes
 
 #### When it does not work
 
-- **The builder still makes a D&D character.** The chat's own card has to be your Game Master card (in a group, the card the chat was opened with). Check the Character sheet box for an error line, and that the Card type is Adventure Mode Game Master.
+- **The builder still makes a D&D character.** The chat's own card has to be your Game Master card (in a group, the card the chat was opened with). Check the Character sheet template box for an error line, and that the Card type is Game Master.
 - **The game master rolls d20s anyway.** Strengthen the dice clause in the ruleset (name the wrong dice), add the worked roll line, and add a dialogue example. Then check the prompt inspector to confirm your ruleset is the one being sent.
 - **Rolls come out with strange modifiers**, such as a d12 trait adding +1. The game master used `mod`. Forbid it in the ruleset by name.
 - **The DM's roll box offers a d20 and a DC.** The sheet is D&D-shaped (no deal, numbers) and has no `roll`. Add one.
 - **A rating is a number of dice** (Forged in the Dark rolls one d6 per point and keeps the highest). There is no method for that; teach the game master to write `3d6kh1` for a rating of 3, and as DM type it in the roll box's dice field.
 - **A persona from another game shows the wrong abilities.** Pick this game in its **Game** box in the card editor: abilities that do not fit are replaced, ready to deal again.
 - **Old dice lines still say DC.** A roll keeps the wording it was made with. New rolls use your game's.
-- **Exploding dice, or counting successes.** Not supported as such: see the dice list in Step 2.
+- **Counting successes.** Not supported as such: see the dice list in Step 2.
 
 ## Choices & interactive replies
 
-Any card can give the player buttons, inputs and other interactive bits in a reply — not just Adventure Mode cards. These are a Rin Chat feature written into the card's text (part of the AICC format); in other apps the lines just show as plain text. Each element goes on a line of its own. In the card editor, type `[[` in a greeting, example dialogue, system prompt or lorebook entry for a list of every element with a short note on each; pick one and it drops in ready to fill.
+Any card can give the player buttons, inputs and other interactive bits in a reply — not just Game Mode cards. These are a Rin Chat feature written into the card's text (part of the AICC format); in other apps the lines just show as plain text. Each element goes on a line of its own. In the card editor, type `[[` in a greeting, example dialogue, system prompt or lorebook entry for a list of every element with a short note on each; pick one and it drops in ready to fill.
 
 **Clickable choices**
 
@@ -442,16 +447,17 @@ A line that holds only `[[choice: …]]` shows as a button right where you wrote
 - Only the latest reply's buttons work. Earlier ones stay visible, grayed out, as a record of what was offered.
 - With the message box empty and the cursor out of any text box, `1` to `9` pick the newest reply's choices in order, skipping locked and hidden ones.
 - A choice has to be on a line of its own. `[[choice: …]]` in the middle of a sentence stays as text, so you can still write about the syntax.
-- A choice can roll one of the card's generators when it's picked: `[[choice: Draw a card | gen Tarot]]`. Stat changes and dice need an Adventure Mode card (Writing an adventure card).
+- A choice can roll one of the card's generators when it's picked: `[[choice: Draw a card | gen Tarot]]`. Stat changes and dice need a Game Mode card (Writing a Game Mode card).
 
 **More interactive elements** — same rule, each on a line of its own, on any card:
 
 - **Timed choice**: `[[choice: Freeze | timer 15]]` puts a countdown under the reply; if you don't pick in time, *that* choice is sent for you. The clock only starts once the choices are on screen, adds time for how long the reply is to read, and pauses while you type or with its Pause button. Don't want it? Settings → Chat Display → Timed choices.
+- **Reactions**: the smiley button under the newest reply puts one emoji on it, and the character is told once, on its next turn ("Sam reacted 😂 to your last reply."). Tap it again to take it back; a regenerated reply starts with none. They are off until you turn them on for every chat in Settings → Chat Display → Reactions, or a card turns them on for itself with `"reactions": true` in its features (the card editor's Game features section has a switch for it, under Play), or picks its own few with `"reactions": { "set": ["🔥", "🌙"] }`. A card's `"reactions": false` keeps them off in its chats whatever the setting says.
 - **Ask**: `[[ask: What do you name the dragon? | as dragon]]` shows a text box; your answer is sent as your message, and with `as` it's also saved, so the card can use `{{getvar::dragon}}` from then on.
 - **Choices that remember**: `[[choice: Take the brass key | set has_key = true]]` saves a story variable when it's picked (`+=` and `-=` count up and down: `set coins -= 5`; several at once: `set a = 1, b = 2`). The model is told what changed, and the card can read it with `{{getvar::has_key}}`.
 - **Lists**: `+=` and `-=` with a word keep a list, `set inventory += rope`: one item each time, no duplicates, any case, read back as `rope, lantern`. On a number they still add and subtract, and a word there changes nothing; a number added to a list joins it as an item. `if inventory has rope` checks for that whole item (`inventory has key` is false for a keycard), while `contains` matches any part of the text.
 - **Choices you finish yourself**: `[[choice: Ask about the map | insert I catch up and ask about ]]` puts its text in your message box instead of sending it, so you can complete the sentence before you send. The button shows a pencil. Everything after `insert` is dropped in exactly as written.
-- **Locked choices**: `[[choice: Open the chest | if has_key | hint You need a key]]` shows with a lock, and the hint, until the condition holds — then it opens by itself. Conditions: `has_key`, `!has_key`, `coins >= 5`, `door == open`, `inventory has rope`, joined with `&&` or `||`. Add `| hide` to keep a choice secret until it's available. On an Adventure card, a condition can read the character sheet too (`if gold >= 10`).
+- **Locked choices**: `[[choice: Open the chest | if has_key | hint You need a key]]` shows with a lock, and the hint, until the condition holds — then it opens by itself. Conditions: `has_key`, `!has_key`, `coins >= 5`, `door == open`, `inventory has rope`, joined with `&&` or `||`. Add `| hide` to keep a choice secret until it's available. On a Game Mode card, a condition can read the character sheet too (`if gold >= 10`).
 - **Choices that finish something**: `[[choice: Take the ember shard | set shard_ember = true | once]]` disappears once everything it sets with `=` already holds, so the story stops offering the kiln after the shard is taken. `+=` and `-=` don't count, so `set gold -= 2, bread += 1 | once` can be bought again. With `| if` too, it shows only while that condition holds and its sets aren't all done; when the condition fails it's hidden, not locked, so no hint shows. A set value with `&&`, `||` or a bracket turns `once` off. It never shows on the button.
 - **Grouping a condition**: brackets decide what goes together, `[[choice: Bribe the guard | if has_coin && (charm >= 3 || knows_name)]]`, and `!` in front of a bracket flips the whole group: `if !(guard_awake || alarm)`. Without brackets, `&&` is read before `||`, as before. Brackets inside a value are just text (`title == Mr (Smith)`), and a bracket left open, a stray one or an empty `()` keeps the choice locked rather than guessing.
 - **Choice tones**: `[[choice: Jump the gap | tone danger]]` gives the button a red edge and arrow. The tones are `danger` (red), `good` (green), `warn` (amber) and `quiet` (muted), in your theme's colors. It only changes the look, never the label, and works beside `if`, `hint`, `set` and the rest; an unknown tone word is ignored.
@@ -459,8 +465,10 @@ A line that holds only `[[choice: …]]` shows as a button right where you wrote
 - **What the model sees**: older replies' choices, question boxes and forms stay on screen, but only the newest set is sent to the model, which saves tokens in a long chat. **Send only the newest buttons** in Settings → Memory & Context turns this off. `[[set:]]` lines and documents are always sent.
 - **Tip for game cards**: build progress from what the *player* does, not from the model remembering a rule. A vault that opens on `if shard_ember && password == whiskers && shard_echo` — each part set by the player's own choice or answer — works however loosely the model plays along.
 - **Pick several**: `[[pick 2: Sword | Shield | Bow | Lantern]]` lets you tick exactly two, then Confirm. Leave out the number to allow any amount. To ask a question above the boxes, put it first, in quotes: `[[pick: "What defines you?" | Strong | Agile | Sharp | as trait]]`.
+- **Scales**: a slider for "how much" questions: `[[scale: How much do you trust her? | 1-10 | Not at all ... Completely | as trust]]`. The first part is the question; then a range, two numbers like `1-10` or `0-100 step 5` (1-10 when you leave it out); then, if you like, the words under each end, separated by three dots. The slider starts in the middle and Send sends the number as your message. With `as trust` the number is also saved, so `[[choice: Tell her the secret | if trust >= 7]]` can depend on it.
 - **Forms**: several questions answered at once, on one line: `[[form: Your character | Name: text | Age: number 18-99 | Class: Fighter, Mage, Rogue | Backstory: long text optional | Has a pet: checkbox | as hero]]`. The first part is the form's title; each part after it is a field, its label, a colon, then what kind of field: `text`, `long text`, `number` (with an optional range like `18-99`), a list of options separated by commas, or `checkbox`. Every field must be filled unless you write `optional` after its kind; Send points at whatever is missing. The answers arrive as your message, one "Label: answer" line each. With `as hero`, each answer is also saved as a variable named after its label: `hero_name`, `hero_age`, `hero_has_a_pet` (a checkbox saves yes or no), for `{{.hero_name}}` later. Forms are drawn by the app, so there are no password or file fields, and nothing a form holds ever leaves the chat.
-- **A form as a character sheet**: on an Adventure Mode card, end the form with `as sheet` and the answers become your character's own stats, on the character sheet beside everything the builder and the game master put there: `[[form: Your hero | Class: Fighter, Mage, Rogue | Strength: number 3-18 | Agility: number 3-18 | as sheet]]`. You can edit them on the sheet like any other stat, and the game master reads them every turn. A character can also be built step by step: an ability the form leaves out, or every ability of a sheet left blank in the builder, is the game master's to choose with you in play. It records each one once, and from then on that score is yours to change, not the game master's. On an ordinary card, save the answers with any `as` name and have replies show them back as a sheet with a document block. The app fills the values in whenever the reply is displayed, so the sheet is always current. To have the model write it, put the block in the card's rules with each brace escaped, `\{\{.hero_name\}\}`: a plain `{{.hero_name}}` there is filled in before the model reads it, so it would copy today's value instead of the macro:
+- **A form that rolls a generator**: a field written `Gender: from Contestant / Gender` is a list of that generator field's own options, and a `roll Contestant as=contestant as.entry="Contestant"` part rolls the generator when the form is sent, with anything a `[Create …]` tag takes (add `hidden` to show the result to the character only). The fields you picked are kept and the rest are rolled; an `optional` list left blank shows as Random and rolls too. A bare `roll` rolls every generator the form's fields come from. The roll is part of your message, so the reply can already use it: `[[form: Your rival | Gender: from Contestant / Gender optional | roll Contestant as=contestant as.entry="Contestant"]]`, then `{{getvar::contestant.Name}}`. A new swipe keeps the same roll; deleting your message takes it back.
+- **A form as a character sheet**: on a Game Mode card, end the form with `as sheet` and the answers become your character's own stats, on the character sheet beside everything the builder and the game master put there: `[[form: Your hero | Class: Fighter, Mage, Rogue | Strength: number 3-18 | Agility: number 3-18 | as sheet]]`. You can edit them on the sheet like any other stat, and the game master reads them every turn. A character can also be built step by step: an ability the form leaves out, or every ability of a sheet left blank in the builder, is the game master's to choose with you in play. It records each one once, and from then on that score is yours to change, not the game master's. On an ordinary card, save the answers with any `as` name and have replies show them back as a sheet with a document block. The app fills the values in whenever the reply is displayed, so the sheet is always current. To have the model write it, put the block in the card's rules with each brace escaped, `\{\{.hero_name\}\}`: a plain `{{.hero_name}}` there is filled in before the model reads it, so it would copy today's value instead of the macro:
 
   ```
   [[doc: paper | Guild papers]]
@@ -803,7 +811,7 @@ Sort them into **folders** with the sidebar, the same way as shared lorebooks: d
 - **You type it:** `[Create HumanNPC]`, or with pinned fields `[Create HumanNPC Gender=Female, Hair Color=Auburn]`. It's rolled **once and frozen** into that message, so it never re-randomizes. Works in greetings, in messages you send, in quick replies, in lorebook entries, and in the model's replies. A tag inside `[code]` won't fire. Add `x3` to roll it several times in one go (`[Create HumanNPC x3]`, up to 10), or a range like `x1-3` to roll how many too, and `as=guard` to keep the result as chat variables: `{{getvar::guard}}` is the whole text, `{{getvar::guard.Hair Color}}` one field — and with a count, `{{getvar::guard.2.Hair Color}}` and `{{getvar::guard.count}}`. They last as long as the message does. Tick *No repeats in a batch* on a field (a name, say) so one `x3` never rolls the same value twice.
 - **Auto-fire**: give the generator a % chance to fire on its own each reply. Events are injected as a note at the end of the recent history, capped at two per turn, and are stable across swipes of the same turn.
 - **The model calls it**: tick *Let the model trigger this* and it becomes a tool the model can call to roll. Needs a provider with tool calling on. The tool takes no arguments on purpose: the model can ask for a roll, but it can't cherry-pick the outcome.
-- **The model offers a button** (Adventure Mode) — the model ends a reply with `[[gen: HumanNPC | Draw a contestant]]` and the player gets a button that fires the generator on click (the label is optional). Unlike model tool-calling this needs no tool support, so it works on **every** model — and it's more reliable than asking the model to type a bare `[Create …]` itself, which weaker models tend to narrate as prose instead of emitting. Ideal for a spin, a draw, or a random encounter the player pulls.
+- **The model offers a button** (Game Mode) — the model ends a reply with `[[gen: HumanNPC | Draw a contestant]]` and the player gets a button that fires the generator on click (the label is optional). Unlike model tool-calling this needs no tool support, so it works on **every** model — and it's more reliable than asking the model to type a bare `[Create …]` itself, which weaker models tend to narrate as prose instead of emitting. Ideal for a spin, a draw, or a random encounter the player pulls.
 
 > **Tip:** **Auto-fire and model tool-calling only work for generators attached to a card** (the card editor's Generators section), the character's or the persona you're chatting as. A generator sitting in the library will still expand when you type `[Create …]`, but it won't fire on its own — otherwise one character's random events would show up in every unrelated chat.
 

@@ -1,12 +1,12 @@
 # Character Cards in Rin Chat: Library, Editor and Card Format
 
-> Read this on [rin.chat](https://rin.chat/guide/character-cards/), with screenshots. Generated from the guide in Rin Chat 1.0.6; changes made here are overwritten by the next release.
+> Read this on [rin.chat](https://rin.chat/guide/character-cards/), with screenshots. Generated from the guide in Rin Chat 1.0.7; changes made here are overwritten by the next release.
 
 ## Characters & the library
 
 The **Library** opens on its **Characters** tab, your card library. The tabs beside it hold your **Lorebooks**, **Generators**, **Document styles** and, with a linked aicharactercards.com account, **My listings** and **Browse AICC**. Every tab is laid out the same way, folders on the left and search and sort along the top, and each keeps its own folder, search and sort while you switch between them. The Library reopens on the tab you used last. Click a card to open its editor, or use its **Chat ▾** button to start or resume a chat without leaving the grid.
 
-**Browse AICC** finds cards on aicharactercards.com and adds them to your library. Search and sort along the top; pick tags on the left to narrow the list. With two or more tags picked, a **Match any tag / Match all tags** menu above them chooses whether a card needs one of them or every one.
+**Browse AICC** finds cards on aicharactercards.com and adds them to your library. Search and sort along the top; pick tags on the left to narrow the list. With two or more tags picked, a **Match any tag / Match all tags** menu above them chooses whether a card needs one of them or every one. The **language** menu starts on **Any language**, since a card's language label is the author's and isn't always right; **Recently updated** in the sort shows cards that just got a new version.
 
 [Screenshot] The library toolbar — most of it is unlabeled. Left of the search box: **New character**, **Card Forge**, **Import cards**. Right of **Sort order & filters**: the three view modes — **grid**, **list** and **field checklist** (which fields each card fills in) — then **save this view**, **library statistics**, **library tools** (find duplicates / placeholder art), and **select multiple cards** for bulk actions.
 
@@ -26,7 +26,7 @@ Do it again with the *same* card later and the app opens the **edit form for the
 
 > **Tip:** **Coming from SillyTavern?** Characters, chats, lorebooks, personas and presets all come across, in one go or a file at a time: see Import from SillyTavern.
 
-**Duplicates are caught for you.** A card whose content already exists is skipped (you can still **Import anyway**). A card that matches an existing one by *name + creator* but differs is listed next to the card it matched, with its art and folder — **Open** or **Compare** them, choose **Replace** (overwrites the existing card with the imported one, content and art, and keeps its folder, tags, notes and chats), **New** or **Skip** for each card, then **Apply**. A placeholder creator such as "anonymous" or "unknown" isn't treated as a match. Tags that differ only by case, spacing or dashes are folded onto the spelling you already use. The import menu's **Import log** records what happened to every card you've imported.
+**Duplicates are caught for you.** A card whose content already exists is skipped (you can still **Import anyway**). A card that matches an existing one by *name + creator* but differs is listed next to the card it matched, with its art and folder — **Open** or **Compare** them, choose **Replace** (overwrites the existing card with the imported one, content and art, and keeps its folder, tags, notes and chats), **New** or **Skip** for each card, then **Apply**. When you import while viewing a folder, a match whose card is somewhere else also offers **Move to** that folder, ticked by default: it moves the existing card there, after the overwrite with Replace, or on its own with Skip. A placeholder creator such as "anonymous" or "unknown" isn't treated as a match. Tags that differ only by case, spacing or dashes are folded onto the spelling you already use. The import menu's **Import log** records what happened to every card you've imported.
 
 **Organizing.**
 
@@ -35,7 +35,7 @@ Do it again with the *same* card later and the app opens the **edit form for the
 - **Folder chips**: in views that aren't a folder (Personas, search results), a card filed somewhere shows a small 📁 chip naming its folder; click it to jump there.
 - **Show nested cards**: with a folder open, this also lists its subfolders' cards, in a second section below its own.
 - **Tags**: click a tag chip to filter by it, **Shift-click to exclude** it. With two or more included tags, the **ALL of / ANY of** toggle switches between AND and OR. **Manage tags** (sidebar) renames, merges, re-cases, colors and bulk-assigns tags across the whole library — including suggested merges for near-duplicate spellings.
-- **Favorites**: the ★ on a card. **Bulk organize** (sidebar) moves, exports or deletes many cards at once, by hand-picking them or by tag.
+- **Favorites**: the ★ on a card. **Bulk actions** (sidebar): its **Organize** tab moves, exports or deletes many cards at once, by hand-picking them or by tag. Its **Health check** tab runs the card editor's health check on every card, lists what it finds by card, and fixes a typo'd {{user}} or {{char}} on one card or all of them at once (each card's History keeps a copy from before the fix).
 
 **Finding things.**
 
@@ -45,7 +45,7 @@ Do it again with the *same* card later and the app opens the **edit form for the
 - **Views:** grid, list, or **field checklist** — the checklist shows *n/m fields filled* per card and which fields those are. Pair it with *Least complete* to find the half-empty cards in a big import.
 - **Saved views**: the bookmark button saves the current search + filters + sort under a name; it appears as a chip you can click to re-apply, or `×` to delete.
 - **Default view**: right-click any sidebar row (All cards, Favorites, All chats, All images, Not in Folder, Personas or a folder) → **Set as default view**. A pin marks it and the library opens there.
-- **All chats** lists every chat across all of your characters, newest first — the search box filters it by chat title or character name, and a click opens the chat.
+- **All chats** (also a button on the title bar) lists every chat across all of your characters, newest first, each with its last message. The search box filters it by chat title or character name, and a click opens the chat. On a phone it is the **Chats** tab.
 
 **Right-click a card** for New chat, Edit, **Edit in Card Forge**, **New card image** (with an image provider set up), **Duplicate**, the four export formats, and Delete.
 
@@ -86,7 +86,7 @@ For example, a card named *Mira* with the Display name *Fantasy - Mira*, so the 
 
 **Every long field** shows its own token estimate and carries two buttons: **✨ Edit with AI** (describe a change, review the proposal, accept or retry — with one-tap quick prompts you can manage) and **⤢** for a full-screen editor. Highlight text inside any field and right-click for formatting plus **Edit selection with AI**, which rewrites just that passage. List fields (greetings, behavior rules, speech patterns, example dialogue) can be reordered by dragging or with ▲/▼ — **the first greeting is the one a new chat opens with**, so reordering is how you change the opener.
 
-**Metadata** also holds **Image prompt prefix** and **Image negative prefix** — fixed visual traits (or a LoRA tag) added to every picture generated for this character, which is what makes two images look like the same person. **Adventure Mode Rulesets** holds every Adventure Mode setting the card has: on a Game Master card, its Ruleset, GM style, Extra GM guidance, Character sheet, On-screen stats and Story clock; on any other card, the **Adventure character sheet** checkbox and the sheet itself. The **Card type** dropdown in the header (Character / User Persona / Adventure Mode Game Master) travels with the card; *Adventure Mode Game Master* starts its chats in Adventure mode automatically.
+**Metadata** also holds **Image prompt prefix** and **Image negative prefix** — fixed visual traits (or a LoRA tag) added to every picture generated for this character, which is what makes two images look like the same person. **Game features** holds what the card's chats play with, in groups. **Rules** has the Game Mode switch and, on a Game Master card, its Ruleset, GM style, Extra GM guidance, Character sheet template and Countdown clock; on any other card, the **Game character sheet** checkbox and the sheet itself. **World**, **People**, **Story** and **Play** hold the world sim features, with the On-screen stats under Play. A preset at the top (Game Mode, Dating sim, Life sim) turns its own features on and leaves the rest as they are; **Clear all** turns everything off. A feature turned off keeps its settings. The **Card type** dropdown in the header (Character / User Persona / Game Master) travels with the card, and the Game Mode switch is the same setting; *Game Master* starts its chats in Game Mode automatically.
 
 **Lorebook** and **Generators** are the card's own lore entries and `[Create …]` randomizers. Attaching a generator embeds a copy that travels with the card. Edit changes that copy only; use Save a copy to library to add it to your Generators library.
 
@@ -105,7 +105,7 @@ For example, a card named *Mira* with the Display name *Fantasy - Mira*, so the 
 
 **Export ▾** writes the card as it is on screen. Use **Rin Chat Format** to keep everything; **SillyTavern Format** for other apps (see the card format section for what that loses).
 
-The **Card health check** callout at the top flags common card problems. Dismiss a single tip with its `✕`, all of them with **Dismiss all**, or turn the whole thing off (or bring dismissed tips back) in Settings → Diagnostics.
+The **Card health check** callout at the top flags common card problems. Dismiss a single tip with its `✕`, all of them with **Dismiss all**, or turn the whole thing off (or bring dismissed tips back) in Settings → Diagnostics. To check every card at once, use **Bulk actions**, **Health check** in the Library's sidebar.
 
 > **Tip:** Before you accept an AI rewrite of a field, remember it can't blank content that's already there — an empty proposal is refused. But it *can* shorten one. Check the before/after, not just the after.
 
@@ -127,11 +127,11 @@ Internally, every card uses the app's own **AICC-Chat** format (`spec_version "1
 - **Lorebook**: the card's own lore (keyword-triggered entries; same engine as the shared ones — see Lorebooks).
 - **Generators**: AICC-native. Embedded `[Create …]` randomizers the card carries with it (see Generators).
 - **Metadata**: creator, creator notes/tips, version, tags, and the two image prefixes that keep generated art on-model. Card art (assets) is carried along verbatim. Metadata also holds **Spoiler mode**: for story and game cards whose fields give the plot away. With it on, anyone who opens the card finds every section folded (except Metadata) and is asked before one opens. The name, image, tags and notes stay visible, and it never changes what the model receives.
-- **Features** (`metadata.features`) — *AICC-native* app-feature flags the card carries, like `card_type` (set via the editor's **Card type** dropdown and the **Adventure character sheet** checkbox under Adventure Mode Rulesets), and `hud_stats`, an Adventure Mode Game Master card's on-screen stats, as a list such as `[{"stat": "hp"}, {"stat": "gold", "label": "Gold", "icon": "coins"}]` (a bare `"hp"` works too; set in the editor's **On-screen stats**). A row may also carry `"bands": [{"min": 1, "max": 20, "label": "Critical"}]` (up to 10, both ends inclusive), `"raises"` and `"lowers"` (up to 8 short phrases each), shown to the player and told to the game master. Not a SillyTavern field: ST exports round-trip it in a namespaced `extensions.aicc` spot that ST tools ignore, and ST's own extensions data is never read as flags.
+- **Features** (`metadata.features`) — *AICC-native* app-feature flags the card carries, like `card_type` (set via the editor's **Card type** dropdown and the **Game character sheet** checkbox under Game features), and `hud_stats`, a Game Master card's on-screen stats, as a list such as `[{"stat": "hp"}, {"stat": "gold", "label": "Gold", "icon": "coins"}]` (a bare `"hp"` works too; set in the editor's **On-screen stats**). A row may also carry `"bands": [{"min": 1, "max": 20, "label": "Critical"}]` (up to 10, both ends inclusive), `"raises"` and `"lowers"` (up to 8 short phrases each), shown to the player and told to the game master. Not a SillyTavern field: ST exports round-trip it in a namespaced `extensions.aicc` spot that ST tools ignore, and ST's own extensions data is never read as flags.
 
 > **Tip:** How fields reach the model: the context template assembles labeled sections (Description, Appearance, Personality, Behavior rules, Speech style, Background, Setting, Example dialogue). You can also reference them in prompts/macros: `{{appearance}}`, `{{corePersonality}}`, `{{behaviorRules}}`, `{{speechStyle}}`, `{{backgroundHistory}}`, `{{worldSetting}}`, `{{dialogueExamples}}`.
 
-**Clickable choices and interactive replies** — buttons, inputs, timers, locked options and documents — are their own section: Choices & interactive replies. They work on any card, not just Adventure Mode.
+**Clickable choices and interactive replies** — buttons, inputs, timers, locked options and documents — are their own section: Choices & interactive replies. They work on any card, not just Game Mode.
 
 **How it differs from SillyTavern**
 
@@ -156,7 +156,7 @@ Internally, every card uses the app's own **AICC-Chat** format (`spec_version "1
 - The editor's **Images** section holds the card's own pictures in three kinds: **Expressions** (sprites named after a feeling — `joy`, `anger`, `neutral`; `joy-2` is a second picture for joy), **Pictures** (with a description of what each shows) and **Backgrounds**.
 - **Import sprite pack** takes a sprite pack — a zip, or images named `joy.png`, `anger.png`… — and replaces expressions of the same name, then says how many were new and how many it replaced. **Export sprite pack** saves them back out the same way. A sprite pack dropped on the library asks which card it's for.
 - **Add from link** downloads the picture into the card straight away, so the card carries it rather than pointing at the website — you can also paste an image into that box.
-- Every image is converted to WebP and scaled down to at most 2048 pixels (backgrounds 1920) as it's added, so a card stays light; animated images are kept as they are. There's no limit, but past 25 MB the card can't go into a bundle.
+- Every image is converted to WebP and scaled down to at most 2048 pixels (backgrounds 1920) as it's added, so a card stays light; animated PNGs and GIFs become animated WebP, keeping every frame. A bundle can hold up to 250 MB, but aicharactercards.com takes bundles of up to 25 MB.
 - They travel with the card in a bundle (`.aicc` / `.charx`) — not in a PNG or JSON export.
 - **In chat**, a card with expressions shows the character's current one in a panel beside the chat (in a group, everyone with sprites; whoever spoke last stands out). The buttons under it switch this chat to **visual novel** style — a stage across the top with the sprites and the card's background, and the chat below it — or hide them. The default is in Settings → Chat Display → Character expressions.
 - The expression is picked from each reply: offline by default, or with an emotion classifier (a one-time ~70 MB download), set in **Choosing the expression**. A line `[[expression: joy]]` in a reply or a greeting always wins and isn't shown. When nothing is clear the card shows `neutral`, or its first expression.
@@ -170,7 +170,7 @@ Internally, every card uses the app's own **AICC-Chat** format (`spec_version "1
 **Exporting**
 
 - **Rin Chat Format** (JSON or PNG card) keeps every character field, including the ones SillyTavern has nowhere to put. The PNG re-imports losslessly, so it's the format to share with other Rin Chat users. It deliberately leaves behind the things that are about *your* copy rather than the character: your **private card notes**, its folder and its favorite flag. Tags do travel.
-- **Bundle (.aicc / .charx)** is one file holding the card, its art and — if you tick them — the document styles it uses and your shared lorebooks. (A card's *own* lorebook is always inside the card.) Select several cards in the library and **Export bundle** to send a whole cast as one file; importing it puts them in a new folder named after the bundle. A one-card bundle can be saved as `.charx`, which SillyTavern and RisuAI also open. Chats are never included, and a bundle can be at most 25 MB. Double-click an `.aicc` file to import it.
+- **Bundle (.aicc / .charx)** is one file holding the card, its art and — if you tick them — the document styles it uses and your shared lorebooks. (A card's *own* lorebook is always inside the card.) Select several cards in the library and **Export bundle** to send a whole cast as one file; importing it puts them in a new folder named after the bundle. A one-card bundle can be saved as `.charx`, which SillyTavern and RisuAI also open. Chats are never included, and a bundle can be at most 250 MB (25 MB to post it on aicharactercards.com). Double-click an `.aicc` file to import it.
 - **SillyTavern Format** is *lossy* — ST has nowhere to put the extra fields, so each flat ST field is rebuilt with the split-out fields **merged back in under labels**:
   - ST `description` = General description + (labeled) Appearance
   - ST `personality` = Personality core + (labeled) Behavior rules + (labeled) Speech style

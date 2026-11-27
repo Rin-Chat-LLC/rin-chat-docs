@@ -1,6 +1,6 @@
 # Troubleshooting Rin Chat
 
-> For AI models and tools that help someone set up Rin Chat or fix a problem with it. Generated from the app's own Guide on every release (this copy is version 1.0.6), so it matches what the app does. "Settings → …" names a place in the app's Settings.
+> For AI models and tools that help someone set up Rin Chat or fix a problem with it. Generated from the app's own Guide on every release (this copy is version 1.0.7), so it matches what the app does. "Settings → …" names a place in the app's Settings.
 
 - Ask which provider and model they use and the exact error text before guessing. Most problems are the provider's key, credit, model name or limits.
 - Rin Chat stores chats and keys on the person's computer. Never ask them to paste an API key, password or recovery key into a chat.
@@ -10,7 +10,7 @@
 
 Rin Chat is a local-first roleplay chat app. Your characters, chats and API keys are stored **encrypted on this device** and are never uploaded. What does leave your machine: the requests you send to *your* AI provider; anonymous usage counts (Usage statistics lists every field); a version check against `rin.chat` at launch; and — only when you use the feature that needs it — card downloads from aicharactercards.com (importing by ID or link); with a linked aicharactercards.com account and your yes, a daily check of the cards you got from there (card IDs and a fingerprint of each card's name, description, personality and scenario) for updates, ratings and reviews; voice runtime files from `rin.chat` and voice/embedding models from `huggingface.co` (first time you enable text-to-speech or vector memory), and the webpage you paste into the forge's attach-a-page. None of these carry your chats, cards or keys. You set up a local account with a password at first run; see Account & security.
 
-**The app at a glance.** Everything is reached from the title bar: **Library** (your characters, and where chats start; its **Personas** row is who *you* are. Tabs along its top hold **Lorebooks** for reusable lore, **Generators**, **Document styles** and, with a linked account, **My listings**), **Tools** (tabs for **Card Forge**, which builds a character, a lorebook, a generator or a document style by talking it through, **Image Studio**, **Story Maker** and **Direct Chat**; hover either button to jump straight to a tab), and **Guide** (this page). To their right: the **☰** menu, the **gear** for Settings, a **phone** icon for reading chats on your phone, the **bell**, and a **search** button — `Ctrl`+`K` from anywhere.
+**The app at a glance.** Everything is reached from the title bar: **Library** (your characters, and where chats start; its **Personas** row is who *you* are. Tabs along its top hold **Lorebooks** for reusable lore, **Generators**, **Document styles** and, with a linked account, **My listings**), **All chats** (every chat with every character in one list, newest first), **Tools** (tabs for **Card Forge**, which builds a character, a lorebook, a generator or a document style by talking it through, **Image Studio**, **Story Maker** and **Direct Chat**; hover either button to jump straight to a tab), and **Guide** (this page). To their right: the **☰** menu, the **gear** for Settings, a **phone** icon for reading chats on your phone, the **bell**, and a **search** button — `Ctrl`+`K` from anywhere.
 
 **The bell.** Every message the app shows you, like an import's result, a saved file, an error in a chat or an extension's note, is also kept under the bell, newest first, with where it came from and when (hover the time for the exact one). A number on it counts the ones you have not seen, red when one is an error; opening it marks them seen. Where a message had a button, such as Show in folder, Copy, Open chat or an import's Show what's inside, it is there too. It keeps the last 100 and forgets them when you sign out or close Rin Chat, since they can quote your chats; Clear all empties it sooner.
 
@@ -21,7 +21,7 @@ Rin Chat is a local-first roleplay chat app. Your characters, chats and API keys
 **Three steps to your first chat:**
 
 1. Add a provider in Settings → LLM Providers — an OpenAI-compatible endpoint (LM Studio, Ollama, KoboldCpp, OpenRouter, NanoGPT, etc.) with its URL and API key. Then pick your **model** in Settings → Generation Configs, which is where a provider and a model are paired up.
-2. Go to the **Library**. Two characters are already there to try — **Jinx Wilder** and the **Adventure Mode Narrator**. Add your own by importing a card (drag in a `.json`/`.png`, or use Import) or creating one with **+ New**.
+2. Go to the **Library**. Two characters are already there to try — **Jinx Wilder** and the **Game Mode Narrator**. Add your own by importing a card (drag in a `.json`/`.png`, or use Import) or creating one with **+ New**.
 3. Open the character → **New chat** → type a message and press `Enter`.
 
 > **Tip:** No provider yet? A local one like LM Studio or Ollama needs no API key — just point the URL at it and pick a model.
@@ -206,7 +206,7 @@ Both run from -2 to 2; negative values do the opposite and encourage repeats. Sm
 
 The **Other settings** card at the bottom of a config holds what the app may do with the model and what happens to a finished reply: **Tool / function calling** (see Providers), and the four below.
 
-**CFG scale** and its **Negative prompt** are only sent when the scale is above 1, and only some local backends (KoboldCpp, text-generation-webui, TabbyAPI) implement them. **Trim incomplete sentences** drops a dangling half-sentence off the end of a finished reply — it's skipped for replies that fired a generator or ended on an adventure choices block, since those endings are already complete. **Reset this config** puts the samplers and dials back to their defaults, stop sequences included — your provider, model, context size, fallback and tool-calling setting stay as they are.
+**CFG scale** and its **Negative prompt** are only sent when the scale is above 1, and only some local backends (KoboldCpp, text-generation-webui, TabbyAPI) implement them. **Trim incomplete sentences** drops a dangling half-sentence off the end of a finished reply — it's skipped for replies that fired a generator or ended on a Game Mode choices block, since those endings are already complete. **Reset this config** puts the samplers and dials back to their defaults, stop sequences included — your provider, model, context size, fallback and tool-calling setting stay as they are.
 
 **Response length** — the *Length* dropdown in the reply-tools row above the composer: Auto, Short (~80 words), Medium (~240), Long (~650). It works by *asking* the model for that many words and to finish its sentence; the matching token cap is only a runaway guard. This control is per session and resets to **Auto** each time you reopen a chat — it isn't saved.
 

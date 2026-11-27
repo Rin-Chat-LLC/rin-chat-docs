@@ -1,6 +1,6 @@
 # Import from SillyTavern: Cards, Lorebooks, Presets, Personas
 
-> Read this on [rin.chat](https://rin.chat/guide/import-from-sillytavern/), with screenshots. Generated from the guide in Rin Chat 1.0.6; changes made here are overwritten by the next release.
+> Read this on [rin.chat](https://rin.chat/guide/import-from-sillytavern/), with screenshots. Generated from the guide in Rin Chat 1.0.7; changes made here are overwritten by the next release.
 
 ## Import from SillyTavern
 

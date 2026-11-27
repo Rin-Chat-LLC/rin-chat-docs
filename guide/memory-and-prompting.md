@@ -1,6 +1,6 @@
 # Memory, Context and Prompting
 
-> Read this on [rin.chat](https://rin.chat/guide/memory-and-prompting/), with screenshots. Generated from the guide in Rin Chat 1.0.6; changes made here are overwritten by the next release.
+> Read this on [rin.chat](https://rin.chat/guide/memory-and-prompting/), with screenshots. Generated from the guide in Rin Chat 1.0.7; changes made here are overwritten by the next release.
 
 ## Memory & context
 
@@ -78,7 +78,7 @@ Shape how the model behaves, globally and per chat. The system-prompt side lives
 
 **Quick dials** are the one-click buttons in that regenerate-directions box. The built-in ten are Shorter, Longer, More action, Slower, Spicier, Lighter, Funnier, Darker, More dialogue and Less repetitive. Edit them, reorder them, add your own, or bring the ten back with **Reset to defaults**, all in the **Regenerate quick prompts** card of Settings → Quick Actions. A dial with empty directions is hidden.
 
-**Adventure Mode GM prompt** (a card on the prompt config, editable on a duplicate) is what Adventure Mode teaches the game master, in three layers. **Core** is the part the app's own parsers read, so it's always sent and can't be edited. **Ruleset** is how a roll is read (targets, modifiers, damage dice, rests, hp at zero) and **GM style** is how the game is run (when to roll, pacing, judging spoken words, using the campaign plan). **Load default text** puts the built-in wording in the box to edit, and **Reset to default** goes back to it. An adventure card can override either layer for itself; see Writing an adventure card.
+**Game Mode GM prompt** (a card on the prompt config, editable on a duplicate) is what Game Mode teaches the game master, in three layers. **Core** is the part the app's own parsers read, so it's always sent and can't be edited. **Ruleset** is how a roll is read (targets, modifiers, damage dice, rests, hp at zero) and **GM style** is how the game is run (when to roll, pacing, judging spoken words, using the campaign plan). **Load default text** puts the built-in wording in the box to edit, and **Reset to default** goes back to it. A Game Mode card can override either layer for itself; see Writing a Game Mode card.
 
 **Response language** (its own card in Settings → System Prompts) is added to every AI request, whichever prompt config is active: chat, summaries, scene notes, chat titles, lorebook entries and Card Forge. Leave *Language* blank and the AI writes in the interface's language; fill it in (Japanese, 简体中文, Brazilian Portuguese) to use another. It covers lorebook keywords too, since an English keyword never fires in a chat written in another language. Turn off *Character replies too* to keep the roleplay itself in the card's own language while everything else follows the setting.
 

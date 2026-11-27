@@ -1,6 +1,6 @@
 # Themes, Colors and Backgrounds
 
-> Read this on [rin.chat](https://rin.chat/guide/appearance/), with screenshots. Generated from the guide in Rin Chat 1.0.6; changes made here are overwritten by the next release.
+> Read this on [rin.chat](https://rin.chat/guide/appearance/), with screenshots. Generated from the guide in Rin Chat 1.0.7; changes made here are overwritten by the next release.
 
 ## Appearance, themes & backgrounds
 
@@ -19,7 +19,7 @@ Looks are split across three leaves under **Customization**: Theme & Colors (the
 
 **Sizing** (Sizing & Layout). *UI scale* (80–200%) zooms the whole interface — nav, buttons, labels — for large or hi-dpi screens. *Message font size* (12–28px) changes only the chat text, with a preview line underneath. *Motion* decides whether the app's animations and document styles' animations play: *Match system* follows your device's reduce motion setting (a Remote Desktop session usually turns it on), *Always reduce* and *Always animate* override it. Each device keeps its own choice, so your phone can differ from your computer.
 
-**Header buttons** (same leaf). Which optional buttons sit on the top bar: Tools (Card Forge, Image Studio, Story Maker and Direct Chat), Lock screen and Guide. Unpinned ones move into the bar's `☰` menu; that's where Lock screen starts. Library and Settings are always shown.
+**Header buttons** (same leaf). Which optional buttons sit on the top bar: All chats, Tools (Card Forge, Image Studio, Story Maker and Direct Chat), Lock screen and Guide. Unpinned ones move into the bar's `☰` menu; that's where Lock screen starts. Library and Settings are always shown. Any Library or Tools tab (Lorebooks, Card Forge and the rest) can have a button of its own, the move arrows (or a drag on the grip) set the bar's order, and **Buttons show** picks icons and text, icons only or text only.
 
 **Chat display** (Chat Display) is how the transcript looks and reads; nothing there changes what the model sees. Its cards:
 
@@ -27,7 +27,7 @@ Looks are split across three leaves under **Customization**: Theme & Colors (the
 - **Sending & scrolling**: *Press Enter to send*; whether a plain click on Continue or Impersonate opens the instructions box first (Shift-click then skips it); and *When a reply finishes*: keep the whole reply on screen, jump to the end of the reply, jump to the start of the reply, or stay where I am.
 - **Chat titles**: the AI chat-title settings and the *New chat name format* (MM/DD/YYYY, DD/MM/YYYY or YYYY-MM-DD) for chats that aren't AI-named.
 - **Thinking display**: whether a reasoning model's Thinking block starts expanded. Only how the block displays is set here; whether it's parsed at all belongs to the generation config.
-- **Card library**: which notes your library tiles show, and whether persona cards appear under All cards.
+- **Card library**: which notes your library tiles show, and whether persona cards appear under All cards. If you deleted a card that came with Rin Chat (Rin herself, say), *Restore built-in cards* appears here and puts it back as it shipped, under its own id, so Rin keeps her Guide answers and her outfits.
 - **Automatic tags** (both off until you turn them on): tag an imported card when you change its content (`edited`) or replace its image (`new art`); you can rename either tag. Turning the first on also tags imported cards you'd already edited. Cards you made in Rin Chat never get these tags.
 
 **Reset chat appearance to defaults**, at the bottom, puts the chat appearance choices back to their defaults. (The scene tracker's switches live in Settings → Memory & Context, not here.)

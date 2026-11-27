@@ -1,6 +1,6 @@
 # Providers, API Keys and Local Models (LM Studio, Ollama)
 
-> Read this on [rin.chat](https://rin.chat/guide/providers/), with screenshots. Generated from the guide in Rin Chat 1.0.6; changes made here are overwritten by the next release.
+> Read this on [rin.chat](https://rin.chat/guide/providers/), with screenshots. Generated from the guide in Rin Chat 1.0.7; changes made here are overwritten by the next release.
 
 ## Providers & the LLM API
 
@@ -135,7 +135,7 @@ Both run from -2 to 2; negative values do the opposite and encourage repeats. Sm
 
 The **Other settings** card at the bottom of a config holds what the app may do with the model and what happens to a finished reply: **Tool / function calling** (see Providers), and the four below.
 
-**CFG scale** and its **Negative prompt** are only sent when the scale is above 1, and only some local backends (KoboldCpp, text-generation-webui, TabbyAPI) implement them. **Trim incomplete sentences** drops a dangling half-sentence off the end of a finished reply — it's skipped for replies that fired a generator or ended on an adventure choices block, since those endings are already complete. **Reset this config** puts the samplers and dials back to their defaults, stop sequences included — your provider, model, context size, fallback and tool-calling setting stay as they are.
+**CFG scale** and its **Negative prompt** are only sent when the scale is above 1, and only some local backends (KoboldCpp, text-generation-webui, TabbyAPI) implement them. **Trim incomplete sentences** drops a dangling half-sentence off the end of a finished reply — it's skipped for replies that fired a generator or ended on a Game Mode choices block, since those endings are already complete. **Reset this config** puts the samplers and dials back to their defaults, stop sequences included — your provider, model, context size, fallback and tool-calling setting stay as they are.
 
 **Response length** — the *Length* dropdown in the reply-tools row above the composer: Auto, Short (~80 words), Medium (~240), Long (~650). It works by *asking* the model for that many words and to finish its sentence; the matching token cap is only a runaway guard. This control is per session and resets to **Auto** each time you reopen a chat — it isn't saved.
 

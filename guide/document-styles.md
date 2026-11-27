@@ -1,6 +1,6 @@
 # Document Styles and Chat Styles
 
-> Read this on [rin.chat](https://rin.chat/guide/document-styles/), with screenshots. Generated from the guide in Rin Chat 1.0.6; changes made here are overwritten by the next release.
+> Read this on [rin.chat](https://rin.chat/guide/document-styles/), with screenshots. Generated from the guide in Rin Chat 1.0.7; changes made here are overwritten by the next release.
 
 ## Document styles
 
@@ -110,15 +110,15 @@ Want one of your own styles with somebody else's card? The card needs a `[[doc:]
 
 ## Chat styles
 
-A character card can bring its own chat style: a look for its chat window, from the message bubbles, names and avatars to the choices, dice rolls, the Adventure Mode HUD, the message box and every color. It applies only while that card's chat is open, and only inside the chat window: the top bar, sidebars, Settings, menus and pop-ups always keep the app's look. A chat style can't load anything from the web or run any code, and the AI never sees it, so it costs no tokens.
+A character card can bring its own chat style: a look for its chat window, from the message bubbles, names and avatars to the choices, dice rolls, the Game Mode HUD, the message box and every color. It applies only while that card's chat is open, and only inside the chat window, plus the colors of the chat's top bar (never its size, fonts or buttons): the sidebars, Settings, menus and pop-ups always keep the app's look. A chat style can't load anything from the web or run any code, and the AI never sees it, so it costs no tokens.
 
-Together with document styles and Adventure Mode, it lets a card feel like its own game or story: a candlelit letter, a starship console, a retro RPG.
+Together with document styles and Game Mode, it lets a card feel like its own game or story: a candlelit letter, a starship console, a retro RPG.
 
 #### Turning them off
 
 - **Every card**: Settings → Chat Display → Card chat styles. On by default.
 - **One card**: hover the **Session info** button at the top of its chat and choose **Turn off this card's chat style** (the same line turns it back on). On a phone, open **Chat options** (the **…** at the top of the chat) and flip **Card chat style**. It stays off for that card in every chat, and nothing in the card changes.
-- Both switches sit outside the chat window, so a style can never hide them.
+- Both switches sit outside the chat window, in a menu that keeps the app's look, so a style can never hide them.
 - Importing a card or bundle tells you which characters bring a chat style.
 
 #### Group chats
@@ -154,7 +154,7 @@ The style travels with the card: exports, PNGs, SillyTavern files (which ignore 
 
 - **Skipped**: anything with `url()`, `@import`, web fonts, CSS nesting and `@layer`. On `:scope` itself only colors, fonts and text, backgrounds, padding, borders and custom properties work, so nothing can move the window or paint outside it.
 - **The card's own pictures and fonts**: each background and picture stored in the card is a variable named after it, `background-image: var(--rc-img-forest)`. Add font files under **Fonts** in the Chat style section (up to 8, 3 MB in all) and write `font-family: var(--rc-font-name, Georgia), Georgia, serif`. Card fonts load on Windows and Android only, so keep the fallback inside the `var()`. Both are listed under **Parts you can style**; click one to copy it. They travel in a bundle, not in a PNG or JSON card file.
-- **The story can change the look**: every chat variable the story sets is on the window, a number as `var(--rc-var-gold)` and a word as `:scope[data-rc-scene="night"]`. In Adventure Mode, `:scope[data-rc-combat]` is on during a fight and `:scope[data-rc-hp]` is `ok`, `hurt`, `low` or `down`. **Try a state** above the preview shows it.
+- **The story can change the look**: every chat variable the story sets is on the window, a number as `var(--rc-var-gold)` and a word as `:scope[data-rc-scene="night"]`. In Game Mode, `:scope[data-rc-combat]` is on during a fight and `:scope[data-rc-hp]` is `ok`, `hurt`, `low` or `down`. **Try a state** above the preview shows it.
 - **One message, its own look**: write rules for `.rc-message[data-rc-look="whisper"]` and the character can mark a reply `[[look: whisper]]` to wear it. The chat tells the character which looks your style has, and the mark never shows. You can mark your own messages too.
 - **Light and dark**: either leave the theme's colors alone, or redefine the whole set (grounds, reply bubble, text, borders and accents) so the chat reads the same in both. Check both in the preview.
 - **Motion**: keep it short, only on the newest reply (`.rc-newest`), and inside `@media (prefers-reduced-motion: no-preference)`, so readers who turned motion off get none.

@@ -10,7 +10,8 @@ Rin Chat covers the whole loop: the character card and the library around it, th
 
 Bring in the cards you already have, edit every field, and keep a large library in order.
 
-- **Import existing cards.** Rin Chat reads the V1, V2 and V3 character card formats, including cards embedded in a PNG image. Import one, or a whole folder at once.
+- **Import existing cards.** Rin Chat reads the V1, V2 and V3 character card formats, including cards embedded in a PNG image, as well as Backyard AI archives (.byaf), Agnai characters, Pygmalion and TavernAI JSON, text-generation-webui YAML characters and older RisuAI cards with their pictures. Import one, or a whole folder at once.
+- **See an import before it happens.** Importing many files at once lists them first: what each one will become, a new card, one you already have, a match for one of yours, or why it will not import. Import brings them in, Cancel leaves your library exactly as it was.
 - **Import from a link.** Paste a character's page link from Chub, RisuRealm, Pygmalion, Perchance or aicharactercards.com and the card arrives with its art. It remembers where it came from, on your computer only.
 - **Browse aicharactercards.com.** With your aicharactercards.com account linked, the Library has a Browse AICC tab: search the site's cards, filter by tag, sort by newest, rating, trending or most downloaded, and open a card's page right in the app. Add to library brings it in like any card you import, and a card you already have says when the site has a newer version.
 - **A card format that does not trap you.** Rin Chat has its own card format for the things older ones cannot express — but it never becomes a one-way door. Export back out as a standard character card any time, as JSON or as an embedded PNG, and other apps read it.
@@ -55,7 +56,7 @@ Decide who is in the scene, including you.
 Background detail that reaches the model when it is relevant, and not before.
 
 - **Lorebook editor.** Full control of a card's entries: keys and regex keys, secondary keys and their logic, always-on entries, insertion position and order, depth and role, and a probability.
-- **Standalone worldbooks.** Keep a worldbook outside any single card, in its own editor. Turn one on for everything or attach it to a single chat. World info JSON imports and exports.
+- **Standalone worldbooks.** Keep a worldbook outside any single card, in its own editor. Turn one on for everything or attach it to a single chat. SillyTavern World Info JSON imports and exports, and NovelAI lorebooks, Agnai memory books and RisuAI lorebook exports import too.
 - **Lorebook tester.** Paste sample text and see which entries would activate, and why each one matched, missed or was filtered out.
 - **Macros.** Insert dynamic values into a card, a lorebook entry or a prompt: variables, comparisons, conditionals, dice rolls, random picks, date and time. A settings panel resolves any macro against a sample scope so you can test it first.
 - **Generators.** Reusable weighted randomizers for NPC details, dice and outcome tables. Call one inline and the result freezes into the message, give it a chance to fire on its own each turn, or let the model call it.
@@ -67,6 +68,7 @@ Light game mechanics inside an ordinary chat, for cards that ask for them. The m
 - **The app referees, not the model.** The model asks for a roll or a stat change; the app performs it. Dice are actually rolled and results are actually applied, so an outcome cannot be quietly narrated in the model's favor.
 - **Choices and rolls as buttons.** Offered actions become buttons under the reply. A roll shows the dice, the difficulty and what is at stake before you commit to it.
 - **A character sheet that keeps itself.** Abilities, level, XP, health, inventory and money update as you play, with ability scores folded into the rolls that use them.
+- **Your stats on screen.** A strip at the top of the chat shows your health, level, experience, money, location and the card's meters and clocks, with a bar where a stat has a maximum. You choose which stats show and their icons, tap one for its details and recent changes, and a Changes box under each message shows what that turn moved.
 - **Costs that are real.** A choice can carry a price. Taking it spends the coin or the health there and then, and the receipt is on the record rather than left to the model to remember.
 - **Rewind puts it back.** Edit or delete your way back up the conversation and every stat change along the way is reversed with it. The sheet always matches the story you actually kept.
 - **The world keeps its own numbers.** Named characters, factions, clocks and quiet countdowns are tracked separately from your own sheet, and the game master's side can stay hidden until you choose to see it.
@@ -86,6 +88,19 @@ A reply can be more than text. Cards can put real buttons, forms and styled docu
 - **Forms and reveals.** Cards can ask for a line of text, offer several picks at once, collect a short form, fold a note away until you click it open, or show status bars.
 - **Menus, action bar and status panel.** A card can carry a shop or a talk-to list the AI opens when the scene calls for it, a row of its own buttons above the message box, and a live status panel.
 - **A library for styles.** Document styles have their own tab in the Library, with folders, starter styles, import and export, and a link from any card to the styles it uses.
+
+## Extensions
+
+Small add-ons that give a chat new abilities, each in a sealed sandbox and on only where you turn it on.
+
+- **Reviewed before they are listed.** Settings, Extensions has Browse AICC, where every listed extension was reviewed before it appears. Installing one runs nothing: you turn it on for one chat or for every chat with a character, after seeing what it asks for in plain sentences.
+- **What an extension can do.** Add slash commands, put a line into what the model sees, react to replies, draw a panel in the sidebar or stats on screen, post messages, ask a model you picked for it, and restyle or theme the chat, each behind a permission you approve.
+- **Sealed off from the rest.** An extension has no access to your files, other chats, your library, your settings or your API keys. It sees only the chat it is on in, and only while that chat is open. Extensions run in the desktop app; turns sent from the phone run none.
+- **The network is your call.** Network access starts blocked. Let an extension ask and it can reach only the sites it names, never your home network, and you see each request exactly as it would be sent before you allow it.
+- **Changes are always labeled.** Anything an extension changes or adds in a chat carries its name, and a chip at the top of the chat lists every changed message with its original, above anything a card can draw.
+- **Withdrawn means off.** If AICC withdraws an extension after review, it stops at once with a notice saying why. Extensions from outside AICC install only after you turn on Trust extensions from any source, and are marked Unreviewed.
+
+More: https://rin.chat/developers/extensions/
 
 ## Pictures
 
@@ -199,7 +214,9 @@ Desktop software you can shape to suit you — including a full theme editor, no
 - **Guided tour.** A one-time tour points out the chat controls on first run, and you can replay it at any time.
 - **Prompt inspector.** See the exact request and response for each call, the token budget per section, the lorebook entries that fired, your variables, and the generator log.
 - **Statistics.** Per-chat counts of turns, words and estimated tokens, plus a library view of totals, favorites, unfiled cards, cards never chatted with and top tags.
-- **Automatic updates.** New versions install from inside the app. There is nothing to re-download by hand.
+- **A bell for everything it told you.** The title bar's bell keeps the last 100 messages the app showed you, from import results to errors, with where each came from and its button still working. It is never saved and is forgotten when you sign out or close the app.
+- **Report a bug from the app.** Report a bug sends a report straight to the developer, anonymous if you like, with up to five screenshots and the debug log if you choose. You can read exactly what will be sent first, and keys and tokens are removed from it.
+- **Updates in the app.** The app tells you when a new version is out, and one click installs it on the next restart. There is nothing to re-download by hand.
 
 ## Privacy and your data
 

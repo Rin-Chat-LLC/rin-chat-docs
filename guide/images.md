@@ -1,6 +1,6 @@
 # AI Image Generation: In Chat, ComfyUI and Image Studio
 
-> Read this on [rin.chat](https://rin.chat/guide/images/), with screenshots. Generated from the guide in Rin Chat 1.0.6; changes made here are overwritten by the next release.
+> Read this on [rin.chat](https://rin.chat/guide/images/), with screenshots. Generated from the guide in Rin Chat 1.0.7; changes made here are overwritten by the next release.
 
 ## Image generation in chats
 
@@ -18,7 +18,7 @@ To skip the AI entirely, type into the instructions box and press **My own promp
 - **"Send me a picture of yourself":** switch on *Generate when a message asks for a picture* and a request inside the story draws one after the reply. It's deliberately narrow — merely mentioning a photograph won't fire it — and it draws with no prompt dialog at all, even if the check is on, because being shown a prompt editor is what breaks the illusion.
 - **The character sends one of its own:** switch on *Character can send pictures* (shown once you have an image provider) and the character is told it may add a picture to a reply by writing `[[picture: what it shows]]`. You never see the marker; when the reply finishes, the picture is drawn the same way as a requested one and lands under it, in the speaking character's look in a group. At most one per reply, only for a reply to a message you sent (a regenerate or swipe draws none), and off by default, because each picture costs a generation. *Wait between pictures* (60 seconds unless you change it; 0 means no wait) holds back one that comes too soon: the reply then says *Picture skipped*, and its **Draw it** draws that picture anyway.
 
-**How prompts are worded** is a setting, because it belongs to the image model rather than to the picture. Flux, Chroma and SD3 are trained on sentences; SDXL, Pony and Illustrious descend from tag lists and read a sentence poorly. *Prompt style instruction* in Settings → Images has a one-click **Use tag style** for the second family.
+**How prompts are worded** is a setting, because it belongs to the image model rather than to the picture. Flux, Chroma and SD3 are trained on sentences; SDXL, Pony and Illustrious descend from tag lists and read a sentence poorly. *Prompt style instruction* in Settings → Images has a one-click **Use tag style** for the second family. Image Studio's **Improve**, **Prompt from character** and **Describe a picture**, and the card art auto-prompt, follow it too unless *Use it beyond chat* is off. A prompt you type and send as it is never changes.
 
 > **Tip:** Hosted image APIs (NanoGPT, OpenAI, Grok, OpenRouter) accept a prompt and little else — they ignore the negative prompt, the seed, and steps/CFG. Those reach the local backends (A1111/Forge, SwarmUI, ComfyUI) and, for the negative only, the NanoGPT models that list one, such as `bria-fibo` and `qwen-image`. The Negative prompt boxes appear only where it is sent. OpenRouter image models ignore the size too; the request asks for portrait framing in words instead. Some models also cap prompt length — `z-image-turbo` at about 1,200 characters, `hidream` at 3,000 — and your style prefix counts toward it, so a long preset can fail a short-looking prompt with a bare error.
 

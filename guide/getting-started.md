@@ -1,12 +1,12 @@
 # Getting Started with Rin Chat
 
-> Read this on [rin.chat](https://rin.chat/guide/getting-started/), with screenshots. Generated from the guide in Rin Chat 1.0.6; changes made here are overwritten by the next release.
+> Read this on [rin.chat](https://rin.chat/guide/getting-started/), with screenshots. Generated from the guide in Rin Chat 1.0.7; changes made here are overwritten by the next release.
 
 ## Getting started
 
 Rin Chat is a local-first roleplay chat app. Your characters, chats and API keys are stored **encrypted on this device** and are never uploaded. What does leave your machine: the requests you send to *your* AI provider; anonymous usage counts (Usage statistics lists every field); a version check against `rin.chat` at launch; and — only when you use the feature that needs it — card downloads from aicharactercards.com (importing by ID or link); with a linked aicharactercards.com account and your yes, a daily check of the cards you got from there (card IDs and a fingerprint of each card's name, description, personality and scenario) for updates, ratings and reviews; voice runtime files from `rin.chat` and voice/embedding models from `huggingface.co` (first time you enable text-to-speech or vector memory), and the webpage you paste into the forge's attach-a-page. None of these carry your chats, cards or keys. You set up a local account with a password at first run; see Account & security.
 
-**The app at a glance.** Everything is reached from the title bar: **Library** (your characters, and where chats start; its **Personas** row is who *you* are. Tabs along its top hold **Lorebooks** for reusable lore, **Generators**, **Document styles** and, with a linked account, **My listings**), **Tools** (tabs for **Card Forge**, which builds a character, a lorebook, a generator or a document style by talking it through, **Image Studio**, **Story Maker** and **Direct Chat**; hover either button to jump straight to a tab), and **Guide** (this page). To their right: the **☰** menu, the **gear** for Settings, a **phone** icon for reading chats on your phone, the **bell**, and a **search** button — `Ctrl`+`K` from anywhere.
+**The app at a glance.** Everything is reached from the title bar: **Library** (your characters, and where chats start; its **Personas** row is who *you* are. Tabs along its top hold **Lorebooks** for reusable lore, **Generators**, **Document styles** and, with a linked account, **My listings**), **All chats** (every chat with every character in one list, newest first), **Tools** (tabs for **Card Forge**, which builds a character, a lorebook, a generator or a document style by talking it through, **Image Studio**, **Story Maker** and **Direct Chat**; hover either button to jump straight to a tab), and **Guide** (this page). To their right: the **☰** menu, the **gear** for Settings, a **phone** icon for reading chats on your phone, the **bell**, and a **search** button — `Ctrl`+`K` from anywhere.
 
 **The bell.** Every message the app shows you, like an import's result, a saved file, an error in a chat or an extension's note, is also kept under the bell, newest first, with where it came from and when (hover the time for the exact one). A number on it counts the ones you have not seen, red when one is an error; opening it marks them seen. Where a message had a button, such as Show in folder, Copy, Open chat or an import's Show what's inside, it is there too. It keeps the last 100 and forgets them when you sign out or close Rin Chat, since they can quote your chats; Clear all empties it sooner.
 
@@ -17,7 +17,7 @@ Rin Chat is a local-first roleplay chat app. Your characters, chats and API keys
 **Three steps to your first chat:**
 
 1. Add a provider in Settings → LLM Providers — an OpenAI-compatible endpoint (LM Studio, Ollama, KoboldCpp, OpenRouter, NanoGPT, etc.) with its URL and API key. Then pick your **model** in Settings → Generation Configs, which is where a provider and a model are paired up.
-2. Go to the **Library**. Two characters are already there to try — **Jinx Wilder** and the **Adventure Mode Narrator**. Add your own by importing a card (drag in a `.json`/`.png`, or use Import) or creating one with **+ New**.
+2. Go to the **Library**. Two characters are already there to try — **Jinx Wilder** and the **Game Mode Narrator**. Add your own by importing a card (drag in a `.json`/`.png`, or use Import) or creating one with **+ New**.
 3. Open the character → **New chat** → type a message and press `Enter`.
 
 > **Tip:** No provider yet? A local one like LM Studio or Ollama needs no API key — just point the URL at it and pick a model.

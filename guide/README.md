@@ -1,6 +1,6 @@
 # Rin Chat Guide
 
-> Read this on [rin.chat](https://rin.chat/guide/), with screenshots. Generated from the guide in Rin Chat 1.0.6; changes made here are overwritten by the next release.
+> Read this on [rin.chat](https://rin.chat/guide/), with screenshots. Generated from the guide in Rin Chat 1.0.7; changes made here are overwritten by the next release.
 
 - [Getting Started with Rin Chat](getting-started.md)
 - [Rin Chat Troubleshooting and FAQ](troubleshooting.md)
@@ -13,10 +13,11 @@
 - [Lorebooks: Import SillyTavern World Info and Write Entries](lorebooks.md)
 - [Providers, API Keys and Local Models (LM Studio, Ollama)](providers.md)
 - [Interactive Replies: Choices, Command Tags, Generators](interactive-replies.md)
+- [World Sim Cards: Clock, Places, Relationships and Endings](world-sim.md)
 - [Document Styles and Chat Styles](document-styles.md)
 - [Macros and Regex Scripts](macros.md)
-- [Adventure Mode: AI Game Master, Dice and Character Sheets](adventure-mode.md)
-- [Build Your Own Adventure Mode Game](build-a-game.md)
+- [Game Mode: AI Game Master, Dice and Character Sheets](adventure-mode.md)
+- [Build Your Own Game for Game Mode](build-a-game.md)
 - [AI Image Generation: In Chat, ComfyUI and Image Studio](images.md)
 - [Voice: Text to Speech and Dictation](voice.md)
 - [Use Rin Chat from Your Phone's Browser](phone-remote.md)

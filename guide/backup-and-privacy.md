@@ -1,6 +1,6 @@
 # Backup, Export, Account Security and Privacy
 
-> Read this on [rin.chat](https://rin.chat/guide/backup-and-privacy/), with screenshots. Generated from the guide in Rin Chat 1.0.6; changes made here are overwritten by the next release.
+> Read this on [rin.chat](https://rin.chat/guide/backup-and-privacy/), with screenshots. Generated from the guide in Rin Chat 1.0.7; changes made here are overwritten by the next release.
 
 ## Export, import & backup
 
@@ -9,6 +9,8 @@
 **Full backup** — Settings → Data & Backup → Export full backup writes a `.rcbak` file to your **Downloads** folder containing every card (with its art and edit history), every chat, lorebooks, folders, and your settings. Large libraries make large files. If anything can't be read — during export or restore — it's skipped and listed for you rather than failing the whole job.
 
 While a backup runs you can keep using the app. Its progress shows what it is on and the file it is writing;**Cancel** stops it and removes the unfinished file. When it finishes, the file's name and size stay on screen with **Show in folder** until you close them. A restore is all or nothing: it reads the whole file before it saves anything, so cancelling it, or a restore that fails, leaves your library exactly as it was. If the app closes during either one, it says so the next time you sign in, and each run is noted in the debug log (Settings → Diagnostics).
+
+> **Tip:** **With more than one vault, a full backup writes a file for each.** Your main vault's file carries your settings, and beside it each other vault gets its own file named after it. To restore one of those, open that vault (or a new, empty one) and import the file there.
 
 > **Tip:** **Pictures generated inside chats are in the backup too** — every image a chat, Direct Chat or Forge session refers to is packed alongside the card art, and restoring puts them back where they were.
 
@@ -25,7 +27,7 @@ While a backup runs you can keep using the app. Its progress shows what it is on
 
 **Smaller exports**
 
-- **Settings only** (the **Settings backup** card: *Export settings* and *Import settings*, which overwrites the matching settings on this device): every setting as a shareable JSON: providers (keys stripped), configs, prompts, regex, macros, quick replies, themes, shortcuts, voice setup, Card Forge guides and sessions, Direct Chats. Safe to hand to someone: no keys, no cards, no chats. The only things left out are machine-specific: the remote-access setup, the AICC login token, the debug log, trained-voice file paths and telemetry ids. (Personas and adventure characters are cards, so they travel in a full backup, not here.)
+- **Settings only** (the **Settings backup** card: *Export settings* and *Import settings*, which overwrites the matching settings on this device): every setting as a shareable JSON: providers (keys stripped), configs, prompts, regex, macros, quick replies, themes, shortcuts, voice setup, Card Forge guides and sessions, Direct Chats. Safe to hand to someone: no keys, no cards, no chats. The only things left out are machine-specific: the remote-access setup, the AICC login token, the debug log, trained-voice file paths and telemetry ids. (Personas and game characters are cards, so they travel in a full backup, not here.)
 - **One card**: native AICC JSON (everything intact) or a SillyTavern-compatible export.
 - **One chat**: Markdown, plain text, or JSONL (from **Export chat** in the chat's sidebar).
 
@@ -49,6 +51,14 @@ Your library is encrypted on this device. Card and chat files are **AES-256-GCM*
 - Each account is a **completely separate encrypted vault** — its own key, library, settings and (optional) linked website account. One can't read another.
 - Add one with **+ Add another account** on the unlock screen. With two or more, the unlock screen shows an **Account** dropdown and *always* asks for a password — nothing opens silently.
 - Each account's data lives in its own folder: `…/rin-chat/<username>/`. Only the account names and folder locations are stored unencrypted, so the picker can be drawn before anything is unlocked.
+
+**Several vaults in one account**
+
+- One account can keep its cards in more than one vault: an archive of cards you rarely open, or one vault per category, so the one you use every day stays quick. Create them in Settings → Data & Backup → Vaults. Each is a folder of its own, beside your account's folder unless you choose another.
+- Every vault opens with the same password and uses the **same settings**: providers and keys, theme, personas, document styles, generators and the rest live in your main vault. A vault holds content: cards, chats, shared lorebooks, folders, Card Forge sessions, stories, version history and pictures.
+- Switch with the vault button beside Settings in the title bar, or the menu at the top of the Library's sidebar; both appear once you have a second vault. The window reloads into the other vault without asking for your password. Search, the phone remote and the Discord bot use whichever vault is open.
+- **Move to vault** (right-click a card, or select cards and use the bar above the grid) takes cards with their art, pictures, sounds, version history and every chat with them, and copies the shared lorebooks they use into the other vault. A group chat stays where it is if any character in it stays, and the move says so. Moved cards arrive outside any folder.
+- **Remove** only takes a vault off the list. Nothing is deleted: its folder stays where it is, and **Add an existing vault folder** brings it back.
 
 **Recovery kit — read this before you need it**
 
@@ -94,7 +104,7 @@ The short, honest version — this page is the terms of use referenced elsewhere
 
 The full Terms of Service and Privacy Policy live online at rin.chat. This page summarizes them in plain language; where they differ, the online versions govern.
 
-**The deal.** Rin Chat is provided free of charge during its beta, for personal use, as-is and without warranty. It is beta software: defects are possible, so keep backups of anything you care about. You may not redistribute or sell the app itself; everything you *create* with it — characters, chats, lorebooks — is yours, and you can export all of it at any time.
+**The deal.** Rin Chat is provided free of charge, for personal use, as-is and without warranty. It is in active development: defects are possible, so keep backups of anything you care about. You may not redistribute or sell the app itself; everything you *create* with it — characters, chats, lorebooks — is yours, and you can export all of it at any time.
 
 **Your responsibilities.** You bring your own AI provider: the account, its costs, and compliance with that provider's own terms are between you and them. You are responsible for the content you create and import, and for complying with the laws that apply to you.
 

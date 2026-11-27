@@ -1,6 +1,6 @@
-# Build Your Own Adventure Mode Game
+# Build Your Own Game for Game Mode
 
-> Read this on [rin.chat](https://rin.chat/guide/build-a-game/), with screenshots. Generated from the guide in Rin Chat 1.0.6; changes made here are overwritten by the next release.
+> Read this on [rin.chat](https://rin.chat/guide/build-a-game/), with screenshots. Generated from the guide in Rin Chat 1.0.7; changes made here are overwritten by the next release.
 
 ## Building your own game (step by step)
 
@@ -8,7 +8,7 @@ Everything you need to turn a tabletop system, a published one or your own, into
 
 #### What a game is made of
 
-- **A Game Master card.** One card whose **Card type** is **Adventure Mode Game Master**. It IS the game: the narrator, the world, the rules, the character sheet and the lore all live on it.
+- **A Game Master card.** One card whose **Card type** is **Game Master**. It IS the game: the narrator, the world, the rules, the character sheet and the lore all live on it.
 - **Persona cards** (optional): ready-made characters, for players who want to start without building one.
 - **A bundle**: one `.aicc` file holding the Game Master card, any persona cards and their art. It is how you hand the whole game to someone else.
 
@@ -16,25 +16,29 @@ Nothing here needs code. The rules and the sheet are text you type into boxes on
 
 #### Step 1: Make the Game Master card
 
-Make a new card and set **Card type**, at the top of the card editor, to **Adventure Mode Game Master**. That turns Adventure Mode on for anyone who opens the card, and fills the editor's **Adventure Mode Rulesets** section with the game's settings (Ruleset, GM style, Extra GM guidance, Character sheet, On-screen stats, Story clock).
+Make a new card and set **Card type**, at the top of the card editor, to **Game Master**. That turns Game Mode on for anyone who opens the card, and fills the Rules group of the editor's **Game features** section with the game's settings (Ruleset, GM style, Extra GM guidance, Character sheet template, Countdown clock; the On-screen stats sit under Play). The **Game Mode** switch or preset there does the same as this Card type.
 
 - **Name it as the narrator**, such as "The Game Master" or "The Keeper", because the name is who the model plays. Put the game's title in **Display name** if you want the library to show that instead.
 - **Description and personality** describe how this game master runs a game: second person, present tense, fair but consequential. Write a narrator, not a companion, or the model will chat with the player instead of running a world around them.
 - **Behavior rules** set the feel of play ("state the stakes before calling for a roll", "a failure changes the situation, it is never undone"). Leave the dice to the ruleset.
 - **World / setting** and **Background** hold the setting and the true situation behind your opening. On the player's first action the app writes a hidden campaign plan from these fields, not from the greeting, so anything the plan needs must be here.
-- **The clock switch** (in Adventure Mode Rulesets): leave it on for a game with something ticking, a heist or a deadline; turn it off for open-ended play, where a countdown only invents false urgency.
+- **The clock switch** (Countdown clock, under Game features): leave it on for a game with something ticking, a heist or a deadline; turn it off for open-ended play, where a countdown only invents false urgency.
 
-More on writing each of these, with examples: Writing an adventure card.
+More on writing each of these, with examples: Writing a Game Mode card.
 
 #### Step 2: Teach it your rules
 
-Out of the box the game master is taught rules that are roughly D&D's. Three boxes in the card's Adventure Mode Rulesets section replace that, for this card only:
+Out of the box the game master is taught rules that are roughly D&D's. Three boxes in the card's Game features section, under Rules, replace that, for this card only:
 
 - **Ruleset**: how a check is made and read. Your dice, what a target means, what the sheet's numbers are, what happens on each result, damage, recovery.
 - **GM style**: how the game is run. Pacing, when to call for a roll at all, how spoken words are judged.
 - **Extra GM guidance**: added after everything else and replaces nothing. House rules and the things this particular game needs its game master to know.
 
 A card's text beats the same boxes in Settings, so the game is self-contained: whoever opens it plays your rules without changing a setting. What your text cannot replace is the part the app itself reads, the directives, the dice grammar and the sheet, which is sent every turn. That is why rewriting the rules can never break the buttons, the dice or the character sheet.
+
+**Start from a system.** The **Start from a system** list above the Ruleset box fills the Ruleset and Character sheet template boxes with a plain-words starting point for Powered by the Apocalypse, Fate or Cortex games: the dice, a worked roll line, what each result means, the game's resources, and a sheet to deal. It is your text from then on, so rename the stats and add your own moves, aspects or traits. If either box already holds text of your own, it asks before replacing it; GM style and Extra GM guidance are never touched.
+
+**Or ask Card Forge.** On a Game Mode card, the Forge's guide can write all four boxes (Ruleset, GM style, Extra GM guidance and Character sheet template): "use the Fate preset", "add a house rule that nobody comes back from the dead", "give the sheet Cool, Hard and Sharp". Each change is shown for review first, and a character sheet the app cannot read is flagged and never saved.
 
 **A ruleset that works covers these, in this order:**
 
@@ -51,11 +55,11 @@ A card's text beats the same boxes in Settings, so the game is self-contained: w
 - `[[stat: <name> = <value>]]`, `[[stat: <name> +2]]`, `[[unstat: <name>]]`. Names say whose a stat is: the player's own sheet uses their name as a prefix (the game master must not put conditions there), `inv_` is inventory, `money_` is money, `npc_<who>_<what>` tracks a character the game master runs, `dm_<what>` is anything else on the game master's side of the screen, and `dm_<player>_<what>` is a condition put on the player (stress, a wound, a curse). `clock_<name> = 2/6` draws a progress dial. The npc_ and dm_ stats are hidden from the player.
 - `[[choice: <action> | <effects>]]` offers buttons; see Choices & interactive replies.
 
-**Dice the app can roll:** `1d20+2` and anything shaped like it, `4dF` (Fate and Fudge dice), `3d6kh1` and `2d6kl1` to keep the best or worst, `d8+d6+d10` to add different dice, and `(d8+d6+d10)kh2` to keep the best two across different dice. **Not supported:** dice that explode on their maximum (have the game master call for a second roll instead), and counting successes across a pool (leave the target off; the app prints every face, and your ruleset tells the game master how to count them).
+**Dice the app can roll:** `1d20+2` and anything shaped like it, `4dF` (Fate and Fudge dice), `3d6kh1` and `2d6kl1` to keep the best or worst, `d8+d6+d10` to add different dice, and `(d8+d6+d10)kh2` to keep the best two across different dice. A `!` after a die makes it explode: `1d6!` rolls again on a 6 and adds it. **Not supported:** counting successes across a pool (leave the target off; the app prints every face, and your ruleset tells the game master how to count them).
 
 #### Step 3: Describe your character sheet
 
-The **Character sheet** box, under the ruleset, tells the app what a character in your game looks like. Without it the character builder makes a D&D character: six D&D abilities, then 4d6 or a 27-point buy. It is written as JSON. Every field:
+The **Character sheet template** box, under the ruleset, tells the app what a character in your game looks like. Without it the character builder makes a D&D character: six D&D abilities, then 4d6 or a 27-point buy. It is written as JSON. Every field:
 
 ```
 {
@@ -110,7 +114,7 @@ Without `roll`, the app picks: a sheet counted in dice rolls a pool, a D&D-shape
 
 **When the AI runs the game**, the game master writes its own `[[roll:]]` lines from your ruleset, and the method decides how the app judges and reports them: a pool is rolled by Cortex rules, a `vs` number on a roll-under game succeeds at or under it, and the dice card says *Target* (or *Under*) rather than D&D's *DC*.
 
-**When a player is the DM** (see Adventure mode), the roll box under a party member's attempt builds the check from that member's sheet: an ability and a DC for the d20; an ability and an optional target for "add"; one trait from each block, any extra dice and an optional target for a pool; an ability for roll-under. Every roll box also has a dice field: type any dice there to roll them instead. A roll with no target reports the number with no verdict, and then neither of the DM's outcome notes is sent.
+**When a player is the DM** (see Game Mode), the roll box under a party member's attempt builds the check from that member's sheet: an ability and a DC for the d20; an ability and an optional target for "add"; one trait from each block, any extra dice and an optional target for a pool; an ability for roll-under. Every roll box also has a dice field: type any dice there to roll them instead. A roll with no target reports the number with no verdict, and then neither of the DM's outcome notes is sent.
 
 **Cortex rules, as the app applies them to a pool:** every die is rolled; a die showing 1 is a *hitch* and counts for nothing; the best `keep` of the rest are added up; the largest die left over is the *effect die* (a d4 if none is left); and all 1s is a *botch*. When two dice show the same face, the smaller one goes into the total, which leaves the bigger free to be the effect die. The dice card shows the effect die and any hitches, and the game master reads them in the report line.
 
@@ -148,8 +152,8 @@ The greeting sets the scene, then offers the way in. These buttons only work in 
 #### Step 7: Make ready-made characters
 
 - **Build one in the builder.** In a chat with your Game Master card, open the builder, make the character, and press **Save as persona card**. The card keeps a copy of your sheet template.
-- **Or make one by hand.** In the Characters library, make a persona card, tick **Adventure character sheet** under Adventure Mode Rulesets, and pick your game in the **Game** box above the Character sheet. That gives it your abilities to deal and your rules for HP and levels. (The Game box lists every Game Master card in your library that has a sheet template.)
-- Players load them from **Load a saved adventure persona** at the top of the builder.
+- **Or make one by hand.** In the Characters library, make a persona card, tick **Game character sheet** under Game features, and pick your game in the **Game** box above the Character sheet. That gives it your abilities to deal and your rules for HP and levels. (The Game box lists every Game Master card in your library that has a sheet template.)
+- Players load them from **Load a saved game persona** at the top of the builder.
 
 #### Step 8: Test it
 
@@ -170,7 +174,7 @@ The greeting sets the scene, then offers the way in. These buttons only work in 
 
 #### Finished examples
 
-Each is a Character sheet box and the core of a matching ruleset. Adjust names and numbers to your game.
+Each is a Character sheet template box and the core of a matching ruleset. Adjust names and numbers to your game.
 
 **Fate Core style**: skills as ladder ratings, a skill pyramid, 4dF plus the skill.
 
@@ -257,11 +261,11 @@ The app judges at or under. Read the bands yourself: under half is a hard succes
 
 #### When it does not work
 
-- **The builder still makes a D&D character.** The chat's own card has to be your Game Master card (in a group, the card the chat was opened with). Check the Character sheet box for an error line, and that the Card type is Adventure Mode Game Master.
+- **The builder still makes a D&D character.** The chat's own card has to be your Game Master card (in a group, the card the chat was opened with). Check the Character sheet template box for an error line, and that the Card type is Game Master.
 - **The game master rolls d20s anyway.** Strengthen the dice clause in the ruleset (name the wrong dice), add the worked roll line, and add a dialogue example. Then check the prompt inspector to confirm your ruleset is the one being sent.
 - **Rolls come out with strange modifiers**, such as a d12 trait adding +1. The game master used `mod`. Forbid it in the ruleset by name.
 - **The DM's roll box offers a d20 and a DC.** The sheet is D&D-shaped (no deal, numbers) and has no `roll`. Add one.
 - **A rating is a number of dice** (Forged in the Dark rolls one d6 per point and keeps the highest). There is no method for that; teach the game master to write `3d6kh1` for a rating of 3, and as DM type it in the roll box's dice field.
 - **A persona from another game shows the wrong abilities.** Pick this game in its **Game** box in the card editor: abilities that do not fit are replaced, ready to deal again.
 - **Old dice lines still say DC.** A roll keeps the wording it was made with. New rolls use your game's.
-- **Exploding dice, or counting successes.** Not supported as such: see the dice list in Step 2.
+- **Counting successes.** Not supported as such: see the dice list in Step 2.

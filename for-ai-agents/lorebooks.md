@@ -1,6 +1,6 @@
 # Writing Rin Chat lorebooks
 
-> For AI models and tools that write and tune Rin Chat lorebooks. Generated from the app's own Guide on every release (this copy is version 1.0.6), so it matches what the app does. "Settings → …" names a place in the app's Settings.
+> For AI models and tools that write and tune Rin Chat lorebooks. Generated from the app's own Guide on every release (this copy is version 1.0.7), so it matches what the app does. "Settings → …" names a place in the app's Settings.
 
 - A lorebook can be its own file or embedded in a card as `character_book`. Its entry fields: https://rin.chat/card-format.md
 - "Memory & context" and "Prompting & steering" are included because they decide where lore lands in the prompt and what it competes with for space.
@@ -42,6 +42,7 @@ All counted in chat messages, `0` = off.
 
 - **Only for these characters / tags**: one box, matched against both the card's name and its tags. Tick **Exclude** to invert it.
 - **Only on these actions**: limit the entry to `normal`, `continue`, `regenerate`, `impersonate`, `swipe` or `quiet` generations. Nothing ticked means every action.
+- **Only while this condition holds**: a condition on the chat's variables, written as in `{{if}}` without the braces, such as `rel_mara_affection >= 40 && world_here == cafe`. While it is false the entry is skipped entirely: it spends no chance roll, starts no sticky or cooldown timer and cannot win its group. Blank means always.
 
 #### Grouping — one of several
 
@@ -81,7 +82,7 @@ Settings → Lorebook Activation holds the activation settings: how many recent 
 
 #### The chat's own lorebook
 
-A third kind, besides a card's book and a shared one: **a lorebook that belongs to one chat and dies with it.** Open it from the book button beside the character sheet and the variables panel. It is not an Adventure Mode feature; any chat can keep one.
+A third kind, besides a card's book and a shared one: **a lorebook that belongs to one chat and dies with it.** Open it from the book button beside the character sheet and the variables panel. It is not a Game Mode feature; any chat can keep one.
 
 It exists for what turns up DURING play. A town of people nobody wrote down before the chat started, a rumor, a room. Those have nowhere good to live otherwise: a variable only reaches the character if something prints it every single turn, the card's own book is permanent and would carry one playthrough's cast into the next, and a shared book outlives the chat as well. A chat-owned book recalls by keyword like any other, so a cast of forty costs nothing in context until one of them is actually mentioned.
 
@@ -178,7 +179,7 @@ Shape how the model behaves, globally and per chat. The system-prompt side lives
 
 **Quick dials** are the one-click buttons in that regenerate-directions box. The built-in ten are Shorter, Longer, More action, Slower, Spicier, Lighter, Funnier, Darker, More dialogue and Less repetitive. Edit them, reorder them, add your own, or bring the ten back with **Reset to defaults**, all in the **Regenerate quick prompts** card of Settings → Quick Actions. A dial with empty directions is hidden.
 
-**Adventure Mode GM prompt** (a card on the prompt config, editable on a duplicate) is what Adventure Mode teaches the game master, in three layers. **Core** is the part the app's own parsers read, so it's always sent and can't be edited. **Ruleset** is how a roll is read (targets, modifiers, damage dice, rests, hp at zero) and **GM style** is how the game is run (when to roll, pacing, judging spoken words, using the campaign plan). **Load default text** puts the built-in wording in the box to edit, and **Reset to default** goes back to it. An adventure card can override either layer for itself; see Writing an adventure card.
+**Game Mode GM prompt** (a card on the prompt config, editable on a duplicate) is what Game Mode teaches the game master, in three layers. **Core** is the part the app's own parsers read, so it's always sent and can't be edited. **Ruleset** is how a roll is read (targets, modifiers, damage dice, rests, hp at zero) and **GM style** is how the game is run (when to roll, pacing, judging spoken words, using the campaign plan). **Load default text** puts the built-in wording in the box to edit, and **Reset to default** goes back to it. A Game Mode card can override either layer for itself; see Writing a Game Mode card.
 
 **Response language** (its own card in Settings → System Prompts) is added to every AI request, whichever prompt config is active: chat, summaries, scene notes, chat titles, lorebook entries and Card Forge. Leave *Language* blank and the AI writes in the interface's language; fill it in (Japanese, 简体中文, Brazilian Portuguese) to use another. It covers lorebook keywords too, since an English keyword never fires in a chat written in another language. Turn off *Character replies too* to keep the roleplay itself in the card's own language while everything else follows the setting.
 
